@@ -33,7 +33,7 @@ export default function ArticleCard() {
                 </div>
             </div>
         </section>
-        <button className="bg-black text-white px-4 py-2 flex mx-auto mt-5">All Posts</button>
+        <button className="bg-black text-white px-8 py-2 flex mx-auto my-10">All Posts</button>
         </>
     );
 }

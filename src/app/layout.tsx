@@ -3,6 +3,7 @@ import ShareButtons from "@/Components/ShareButtons";
 import "./globals.css";
 import ArticleCard from "@/Components/ArticleCard";
 import { LayoutContainer } from "@/Components/LayoutContainer";
+import Footer from "@/Components/Footer";
 
 export const metadata = {
   title: "My Blog",
@@ -19,9 +20,7 @@ export default function RootLayout({
       <body>
         <Header />
         <main className="p-8">{children}</main>
-        <LayoutContainer>
-          <ArticleCard />
-        </LayoutContainer>
+        <Footer />
       </body>
     </html>
   );
