@@ -1,48 +1,60 @@
 import { FaHeart } from "react-icons/fa";
+import Image from "next/image";
 
-export default function ArticleCard() {
-    return (
-        <>
-        <section className="flex flex-column overflow-hidden bg-white w-[1000] h-[300] mx-auto">
-            {/*Food card */}
-            <div className="flex flex-row overflow-hidden bg-white ">
-            {/* Image */}
-                <div className="md:w-1/2">
-                    <img src="/assets/images/article_1.avif" alt="article_1"></img>
-                </div>
-                {/* Content */}
-                <div className="md:w-1/2 p-6 flex flex-col justify-between">
-                    <div className="flex flex-col">
-                        <img ></img>
-                        <div className="flex flex-col">
-                            {/* Author */}
-                            <p>Admin</p>
-                            <p>Mar 22, 2023 2 min read</p>
-                        </div>
-                        <div className="text-black text-xl">Miracle no-knead bread</div>
-                        <p>Create a blog post subtitle that summarizes your post in a few short, punchy sentences and entices your audience to continue reading....</p>
-                        <div>
-                            <hr></hr>
-                            <div className="flex flex-row justify-between">
-                                <p>40 views</p>
-                                <div><FaHeart className="hover:text-red-600 cursor-pointer text-xl" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+type ArticleCardProps = {
+  title: string;
+  excerpt: string;
+  coverImage: string;
+  author: {
+    name: string;
+    avatar?: string;
+  };
+  date: string;
+};
+
+export default function ArticleCard({
+  title,
+  excerpt,
+  coverImage,
+  author,
+  date,
+}: ArticleCardProps) {
+  return (
+    <section className="flex flex-column bg-white w-full max-w-[1000px] h-auto mx-auto">
+      <div className="flex flex-row bg-white border">
+        <div className="md:w-1/2">
+          <Image src={coverImage} width={500} height={300} alt={title} className="object-cover" />
+        </div>
+        <div className="md:w-1/2 p-6 flex flex-col justify-between">
+          <div className="flex flex-col space-y-2">
+            <div className="flex items-center space-x-2">
+              {author.avatar && (
+                <Image src={author.avatar} width={24} height={24} alt={author.name} className="rounded-full" />
+              )}
+              <p>{author.name}</p>
             </div>
-        </section>
-        <button className="bg-black text-white px-8 py-2 flex mx-auto my-10">All Posts</button>
-        </>
-    );
+            <p className="text-sm text-gray-500">{formatDate(date)}</p>
+            <h2 className="text-black text-xl font-semibold">{title}</h2>
+            <p>{excerpt}</p>
+          </div>
+          <div>
+            <hr />
+            <div className="flex flex-row justify-between text-sm pt-2">
+              <p>40 views</p>
+              <FaHeart className="hover:text-red-600 cursor-pointer text-xl" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 function formatDate(dateStr: string): string {
-    const date = new Date(dateStr);
-    return date.toLocaleDateString("vi-VN", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-    });
+  const date = new Date(dateStr);
+  return date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
 }

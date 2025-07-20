@@ -11,7 +11,7 @@ const Header = () => {
     >
       <div className="bg-white px-2 py-4 text-center">
         <h1 className="font-serif font-bold text-black text-6xl">
-          Simple food
+          NextGame
         </h1>
 
         <nav className="mt-6 flex flex-wrap justify-center items-center gap-6 text-neutral-500 text-sm font-semibold ">
@@ -22,7 +22,7 @@ const Header = () => {
         </nav>
 
         <Image
-          src="/assets/images/header_image.avif"
+          src="/assets/images/header_image.jpg"
           width={1000}
           height={300}
           alt="header_image"
