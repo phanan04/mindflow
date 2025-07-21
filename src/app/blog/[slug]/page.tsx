@@ -8,14 +8,15 @@ import { PrismicRichText } from "@prismicio/react";
 import { asText } from "@prismicio/helpers"; // ✅
 import ShareButtons from "@/Components/ShareButtons";
 
-type PageProps = {
+
+interface Props {
   params: {
     slug: string;
   };
-};
+}
 
 
-export default async function BlogPage({ params }: PageProps) {
+export default async function BlogPage({ params }: Props) {
   const client = createClient();
   const post = await client.getByUID("post", params.slug);
 
