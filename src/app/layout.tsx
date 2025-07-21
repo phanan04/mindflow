@@ -2,6 +2,7 @@ import Header from "@/Components/Header";
 import "./globals.css";
 import Footer from "@/Components/Footer";
 import SearchButton from "@/Components/SearchButton";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata = {
   title: "My Blog",
@@ -17,7 +18,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
-        <main className="p-2">{children}</main>
+        <main className="p-2">
+          {children}
+          <SpeedInsights />
+        </main>
         <SearchButton />
         <Footer />
       </body>
