@@ -1,8 +1,5 @@
 import Header from "@/Components/Header";
-import ShareButtons from "@/Components/ShareButtons";
 import "./globals.css";
-import ArticleCard from "@/Components/ArticleCard";
-import { LayoutContainer } from "@/Components/LayoutContainer";
 import Footer from "@/Components/Footer";
 import SearchButton from "@/Components/SearchButton";
 

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { formatDate } from "@/lib/formatDate";
 import { PrismicRichText } from "@prismicio/react";
 import { asText } from "@prismicio/helpers"; // ✅
+import ShareButtons from "@/Components/ShareButtons";
 
 type PageProps = {
   params: { slug: string };
@@ -47,6 +48,7 @@ export default async function BlogPage({ params }: PageProps) {
       <div className="prose max-w-none">
         <PrismicRichText field={post.data.content} /> 
       </div>
+      <ShareButtons />
     </article>
   );
 }
