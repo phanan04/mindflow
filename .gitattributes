@@ -1,0 +1,11 @@
+# Tự động chuẩn hóa file văn bản
+* text=auto
+
+# Ép các loại file dùng LF
+*.js   text eol=lf
+*.ts   text eol=lf
+*.tsx  text eol=lf
+*.css  text eol=lf
+*.html text eol=lf
+*.md   text eol=lf
+*.json text eol=lf

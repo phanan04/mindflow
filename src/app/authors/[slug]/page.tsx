@@ -1,4 +1,4 @@
-import { createClient } from "@/prismicio";
+import { createClient } from "../../../lib/prismicio";
 import { PrismicRichText } from "@prismicio/react";
 import { FaEnvelope, FaFacebook, FaPinterest } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -7,7 +7,6 @@ import Image from "next/image";
 export default async function AuthorPage() {
   const client = createClient();
 
-  // Lấy 1 tác giả đầu tiên (giả sử bạn chỉ có 1 tác giả)
   const [author] = await client.getAllByType("author");
 
   return (

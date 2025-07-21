@@ -4,6 +4,7 @@ import "./globals.css";
 import ArticleCard from "@/Components/ArticleCard";
 import { LayoutContainer } from "@/Components/LayoutContainer";
 import Footer from "@/Components/Footer";
+import SearchButton from "@/Components/SearchButton";
 
 export const metadata = {
   title: "My Blog",
@@ -19,7 +20,8 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
-        <main className="p-8">{children}</main>
+        <main className="p-2">{children}</main>
+        <SearchButton />
         <Footer />
       </body>
     </html>

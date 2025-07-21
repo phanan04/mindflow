@@ -9,6 +9,7 @@ export async function getPosts() {
 
   return posts.map((post) => ({
     id: post.id,
+    uid: post.uid,
     slug: post.uid,
     title: asText(post.data.title),
     excerpt: asText(post.data.excerpt),

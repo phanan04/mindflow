@@ -9,7 +9,7 @@ const Header = () => {
  text-black"
       role="banner"
     >
-      <div className="bg-white px-2 py-4 text-center">
+      <div className="bg-white px-2 py-4 text-center">  
         <h1 className="font-serif font-bold text-black text-6xl">
           NextGame
         </h1>
@@ -24,9 +24,9 @@ const Header = () => {
         <Image
           src="/assets/images/header_image.jpg"
           width={1000}
-          height={300}
+          height={400}
           alt="header_image"
-          className="object-cover mx-auto py-4"
+          className="object-fit mx-auto py-4 h-[400px]"
         />
         </div>
     </header>
