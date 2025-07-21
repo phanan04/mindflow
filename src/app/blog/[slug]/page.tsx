@@ -9,14 +9,11 @@ import { asText } from "@prismicio/helpers"; // ✅
 import ShareButtons from "@/Components/ShareButtons";
 
 
-interface Props {
-  params: {
-    slug: string;
-  };
-}
-
-
-export default async function BlogPage({ params }: Props) {
+export default async function BlogPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const client = createClient();
   const post = await client.getByUID("post", params.slug);
 
