@@ -209,7 +209,7 @@ export type CategoryDocument<Lang extends string = string> =
 /**
  * Item in *Post → Tags*
  */
-export interface PostDocumentDataTagsItem {}
+export type PostDocumentDataTagsItem = object;
 
 /**
  * Content for Post documents
@@ -284,15 +284,15 @@ interface PostDocumentData {
   >;
 
   /**
-   * Catergory field in *Post*
+   * Category field in *Post*
    *
    * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
-   * - **API ID Path**: post.catergory
+   * - **API ID Path**: post.category
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/fields/content-relationship
    */
-  catergory: ContentRelationshipFieldWithData<
+  category: ContentRelationshipFieldWithData<
     [{ id: "category"; fields: ["name", "slug", "summary"] }]
   >;
 

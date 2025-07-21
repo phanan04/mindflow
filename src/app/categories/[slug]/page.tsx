@@ -1,9 +1,31 @@
+
 import { createClient } from "../../../lib/prismicio";
 import CategoryArticleCard from "../../../Components/CategoryArticleCard";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import * as prismic from "@prismicio/client";
 import { asText } from "@prismicio/helpers";
+
+interface AuthorData {
+  data?: {
+    name?: string;
+    avatar?: {
+      url?: string;
+    };
+  };
+}
+
+interface PostData {
+  uid: string;
+  data: {
+    title: prismic.RichTextField;
+    excerpt: prismic.RichTextField;
+    coverImage: { url?: string | null };
+    author: AuthorData;
+    date?: string;
+    category?: string;
+  };
+}
 
 
 type Props = {
@@ -18,7 +40,8 @@ export default async function CategoryPage({ params }: Props) {
   const { slug } = await params;
   const categoryUid = slug;
 
-  let posts;
+  let posts: PostData[] = [];
+  let category = null;
 
   // Handle special case for "allposts"
   if (categoryUid === "allposts") {
@@ -32,15 +55,15 @@ export default async function CategoryPage({ params }: Props) {
     });
   } else {
     // Fetch category và posts theo category
-    const category = await client.getByUID("category", categoryUid).catch(() => null);
-    
+    category = await client.getByUID("category", categoryUid).catch(() => null);
+
     if (!category) {
       notFound();
     }
 
     posts = await client.getAllByType("post", {
       predicates: [
-        prismic.filter.at("my.post.category", category.id), 
+        prismic.filter.at("my.post.category", category.id),
       ],
       orderings: {
         field: "my.post.date",
@@ -72,7 +95,6 @@ export default async function CategoryPage({ params }: Props) {
           RPG
         </Link>
       </div>
-
       {/* CATEGORY TITLE */}
       <h2 className="text-2xl font-bold text-center pb-6 uppercase">{categoryUid}</h2>
 
@@ -86,8 +108,8 @@ export default async function CategoryPage({ params }: Props) {
             excerpt={asText(post.data.excerpt)}
             coverImage={post.data.coverImage.url ?? "/fallback.jpg"}
             author={{
-              name: (post.data.author as any)?.data?.name ?? "Unknown Author",
-              avatar: (post.data.author as any)?.data?.avatar?.url,
+              name: post.data.author?.data?.name ?? "Unknown Author",
+              avatar: post.data.author?.data?.avatar?.url,
             }}
             date={post.data.date ?? new Date().toISOString()}
           />

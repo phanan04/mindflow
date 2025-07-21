@@ -68,10 +68,10 @@
           ]
         }
       },
-      "catergory": {
+      "category": {
         "type": "Link",
         "config": {
-          "label": "Catergory",
+          "label": "Category",
           "select": "document",
           "repeat": false,
           "customtypes": [

@@ -1,5 +1,5 @@
 import ArticleCard from "@/Components/ArticleCard";
-import { getPosts } from "../lib/getPosts";
+import { getPosts } from "@/lib/getPosts";
 import Link from "next/link";
 
 export default async function HomePage() {
@@ -13,9 +13,9 @@ export default async function HomePage() {
           <ArticleCard key={post.id} {...post} />
         ))}
       </div>
-      <button className="px-4 py-2 bg-black text-white mx-auto flex justify-center">
-        <Link href="/categories/allposts">ALL POSTS</Link>
-      </button>
+      <Link href="/categories/allposts" className="px-4 py-2 bg-black w-fit text-white mx-auto flex justify-center">
+        ALL POSTS
+      </Link>
     </div>
   );
 }
