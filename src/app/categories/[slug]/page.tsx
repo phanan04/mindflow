@@ -22,7 +22,7 @@ interface PostData {
     excerpt: prismic.RichTextField;
     coverImage: { url?: string | null };
     author: AuthorData;
-    date?: string;
+    date?: string | null;
     category?: string;
   };
 }
@@ -45,7 +45,7 @@ export default async function CategoryPage({ params }: Props) {
 
   // Handle special case for "allposts"
   if (categoryUid === "allposts") {
-    posts = await client.getAllByType("post", {
+    const prismicPosts = await client.getAllByType("post", {
       orderings: {
         field: "my.post.date",
         direction: "desc",
@@ -53,6 +53,24 @@ export default async function CategoryPage({ params }: Props) {
       pageSize: 20,
       fetchLinks: ["author.name", "author.avatar"],
     });
+    posts = prismicPosts.map(post => ({
+      uid: post.uid,
+      data: {
+        title: post.data.title,
+        excerpt: post.data.excerpt,
+        coverImage: post.data.coverImage,
+        author: {
+          data: {
+            name: (post.data.author && 'data' in post.data.author && post.data.author.data?.name) ? post.data.author.data.name : undefined,
+            avatar: (post.data.author && 'data' in post.data.author && post.data.author.data?.avatar && post.data.author.data.avatar.url)
+              ? { url: post.data.author.data.avatar.url ?? undefined }
+              : undefined,
+          }
+        },
+        date: typeof post.data.date === 'string' ? post.data.date : undefined,
+        category: (post.data.category && 'data' in post.data.category && post.data.category.data?.name) ? post.data.category.data.name : undefined,
+      }
+    }));
   } else {
     // Fetch category và posts theo category
     category = await client.getByUID("category", categoryUid).catch(() => null);
@@ -61,7 +79,7 @@ export default async function CategoryPage({ params }: Props) {
       notFound();
     }
 
-    posts = await client.getAllByType("post", {
+    const prismicPosts = await client.getAllByType("post", {
       predicates: [
         prismic.filter.at("my.post.category", category.id),
       ],
@@ -72,6 +90,24 @@ export default async function CategoryPage({ params }: Props) {
       pageSize: 20,
       fetchLinks: ["author.name", "author.avatar"],
     });
+    posts = prismicPosts.map(post => ({
+      uid: post.uid,
+      data: {
+        title: post.data.title,
+        excerpt: post.data.excerpt,
+        coverImage: post.data.coverImage,
+        author: {
+          data: {
+            name: (post.data.author && 'data' in post.data.author && post.data.author.data?.name) ? post.data.author.data.name : undefined,
+            avatar: (post.data.author && 'data' in post.data.author && post.data.author.data?.avatar && post.data.author.data.avatar.url)
+              ? { url: post.data.author.data.avatar.url ?? undefined }
+              : undefined,
+          }
+        },
+        date: typeof post.data.date === 'string' ? post.data.date : undefined,
+        category: (post.data.category && 'data' in post.data.category && post.data.category.data?.name) ? post.data.category.data.name : undefined,
+      }
+    }));
   }
 
   if (!posts || posts.length === 0) {
@@ -111,7 +147,7 @@ export default async function CategoryPage({ params }: Props) {
               name: post.data.author?.data?.name ?? "Unknown Author",
               avatar: post.data.author?.data?.avatar?.url,
             }}
-            date={post.data.date ?? new Date().toISOString()}
+            date={post.data.date || new Date().toISOString()}
           />
         ))}
       </div>

@@ -1,6 +1,5 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+// Đổi toàn bộ nội dung sang cú pháp JavaScript
+const nextConfig = {
   images: {
     remotePatterns: [
       {
@@ -15,4 +14,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

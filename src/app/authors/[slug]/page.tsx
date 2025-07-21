@@ -20,7 +20,7 @@ export default async function AuthorPage() {
           <div className="flex flex-col gap-4">
             <div className="flex flex-row gap-2 w-1/3">
               <Image
-                src={author.data.avatar.url}
+                src={author.data.avatar.url || "/public/assets/images/default-avatar.png"}
                 alt={author.data.avatar.alt || "Author"}
                 width={100}
                 height={100}

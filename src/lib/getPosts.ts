@@ -16,8 +16,8 @@ export async function getPosts() {
     coverImage: post.data.coverImage?.url ?? "/fallback.jpg",
     date: post.data.date ?? new Date().toISOString(),
     author: {
-      name: post.data.author?.data?.name,
-      avatar: post.data.author?.data?.avatar?.url,
+      name: post.data.author && 'data' in post.data.author && post.data.author.data?.name ? post.data.author.data.name : undefined,
+      avatar: post.data.author && 'data' in post.data.author && post.data.author.data?.avatar?.url ? post.data.author.data.avatar.url : undefined,
     },
   }));
 }

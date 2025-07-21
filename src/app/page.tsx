@@ -10,7 +10,14 @@ export default async function HomePage() {
       <h1 className="text-black text-center text-3xl py-4">Feature game</h1>
       <div className="space-y-6 pb-4">
         {posts.map((post) => (
-          <ArticleCard key={post.id} {...post} />
+          <ArticleCard
+            key={post.id}
+            {...post}
+            author={{
+              ...post.author,
+              name: post.author.name ?? "Unknown Author",
+            }}
+          />
         ))}
       </div>
       <Link href="/categories/allposts" className="px-4 py-2 bg-black w-fit text-white mx-auto flex justify-center">
