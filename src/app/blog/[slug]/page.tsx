@@ -1,4 +1,5 @@
 // app/blog/[slug]/page.tsx
+
 import { createClient } from "@/lib/prismicio";
 import { notFound } from "next/navigation";
 import Image from "next/image";
@@ -7,8 +8,14 @@ import { PrismicRichText } from "@prismicio/react";
 import { asText } from "@prismicio/helpers"; // ✅
 import ShareButtons from "@/Components/ShareButtons";
 
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
 
-export default async function BlogPage({ params }: { params: { slug: string } }) {
+
+export default async function BlogPage({ params }: PageProps) {
   const client = createClient();
   const post = await client.getByUID("post", params.slug);
 
