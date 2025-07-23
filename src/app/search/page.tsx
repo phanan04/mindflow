@@ -1,3 +1,5 @@
 export default function SearchPage() {
-    return <div>Search page</div>;
+    return (
+        <div className="text-center font-bold">Search page</div>
+    );
 }

@@ -35,7 +35,7 @@ export default function SearchOverlay({
 
       <form onSubmit={handleSubmit} className="w-full max-w-xl text-center">
         <h2 className="text-gray-400 text-2xl md:text-4xl font-light mb-6">
-          Start typing and press <strong>Enter</strong> to search
+          Typing and press <strong>Enter</strong> to search
         </h2>
         <input
           type="text"
