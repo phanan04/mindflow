@@ -29,9 +29,9 @@ interface PostData {
 
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export default async function CategoryPage({ params }: Props) {

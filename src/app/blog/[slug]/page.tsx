@@ -12,10 +12,11 @@ import ShareButtons from "@/Components/ShareButtons";
 export default async function BlogPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
   const client = createClient();
-  const post = await client.getByUID("post", params.slug);
+  const post = await client.getByUID("post", slug);
 
   if (!post) return notFound();
 
