@@ -33,9 +33,9 @@ export default function ArticleCard({
 
   return (
     
-      <section className="flex flex-col bg-white w-full max-w-[1000px] h-auto mx-auto">
+      <section className="flex flex-col bg-white w-full max-w-[1000px] h-auto mx-auto border ">
         <Link href={`/blog/${slug}`}>
-          <div className="flex flex-row bg-white border">
+          <div className="flex flex-row bg-white border dark:border-black">
             <div className="md:w-1/2">
               <Image
                 src={coverImage}
@@ -45,7 +45,7 @@ export default function ArticleCard({
                 className="object-cover"
               />
             </div>
-            <div className="md:w-1/2 p-6 flex flex-col justify-between">
+            <div className="md:w-1/2 p-6 flex flex-col justify-between border  dark:bg-white dark:text-black ">
               <div className="flex flex-col space-y-2">
                 <div className="flex items-center space-x-2">
                   {author.avatar && (

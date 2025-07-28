@@ -2,7 +2,8 @@ import Header from "@/Components/Header";
 import "./globals.css";
 import Footer from "@/Components/Footer";
 import SearchButton from "@/Components/SearchButton";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ThemeProvider } from "next-themes";
 
 export default function RootLayout({
   children,
@@ -10,15 +11,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        <Header />
-        <main className="p-2">
-          {children}
-          <SpeedInsights />
-        </main>
-        <SearchButton />
-        <Footer />
+    <html lang="en" suppressHydrationWarning>
+      <body className="dark:bg-zinc-900 dark:text-white">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+            <main className="p-2 dark:bg-zinc-900 dark:text-white">
+              {children}
+              <SpeedInsights />
+            </main>
+          <SearchButton />
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

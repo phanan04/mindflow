@@ -6,15 +6,15 @@ const Header = () => {
   return (
     <header
       className="bg-white py-2 pr-0 pl-0
- text-black"
+ text-black dark:bg-zinc-900 dark:text-white"
       role="banner"
     >
-      <div className="bg-white px-2 py-4 text-center">  
-        <h1 className="font-serif font-bold text-black text-6xl">
+      <div className="bg-white px-2 py-4 text-center dark:bg-zinc-900 dark:text-white">  
+        <h1 className="font-serif font-bold text-black text-6xl dark:bg-zinc-900 dark:text-white">
           NextGame
         </h1>
 
-        <nav className="mt-6 flex flex-wrap justify-center items-center gap-6 text-neutral-500 text-sm font-semibold ">
+        <nav className="mt-6 flex flex-wrap justify-center items-center gap-6 text-neutral-500 text-sm font-semibold dark:bg-zinc-900 dark:text-white">
           <Link href="/" className="hover:text-black">Home</Link>
           <Link href="/categories/allposts" className="hover:text-black">Category</Link>
           <Link href="/authors/about" className="hover:text-black">About</Link>
