@@ -17,7 +17,7 @@ export default async function SearchPage({
       <h1 className="text-center my-2 font-bold text-xl">Kết quả tìm kiếm: </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {posts.length === 0 ? (
-          <p>No results found for "{query}"</p>
+          <p>No results found for &quot;{query}&quot;</p>
         ) : (
           posts.map((post) => (
             <CategoryArticleCard
