@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { Menu, Search, X } from "lucide-react";
-import SearchOverlay from "./SearchOverplay"; 
 import MenuModal from "./MenuModal";
+import SearchModal from "./SearchModal";
 
 export default function SearchButton() {
   const [showMenu, setShowMenu] = useState(false);
@@ -51,7 +51,7 @@ export default function SearchButton() {
       )}
 
       {/* Search Modal */}
-      <SearchOverlay isOpen={openSearch} onClose={() => setOpenSearch(false)} />
+      <SearchModal isOpen={openSearch} onClose={() => setOpenSearch(false)} />
     </>
   );
 }

@@ -12,7 +12,7 @@ type CategoryArticleCardProps = {
     avatar?: string;
   };
   date: string;
-  category?: string; // Thêm category prop nếu cần
+  category?: string; 
 };
 
 export default function CategoryArticleCard({
@@ -50,7 +50,7 @@ export default function CategoryArticleCard({
             <p className="text-gray-600 text-sm line-clamp-3">{excerpt}</p>
 
             {/* Author and Meta */}
-            <div className="flex items-center justify-between pt-2 border-t border-gray-100">
+            <div className="flex items-center justify-between pt-2 border-t border-gray-200 mb-0">
               <div className="flex items-center space-x-2">
                 {author.avatar && (
                   <Image
@@ -67,7 +67,7 @@ export default function CategoryArticleCard({
               <div className="flex items-center space-x-3 text-sm text-gray-500">
                 <span>{formatDate(date)}</span>
                 <FaHeart className="hover:text-red-500 cursor-pointer transition-colors" />
-              </div>
+              </div>  
             </div>  
         </div>
       </Link>

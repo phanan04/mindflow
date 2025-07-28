@@ -4,11 +4,6 @@ import Footer from "@/Components/Footer";
 import SearchButton from "@/Components/SearchButton";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
-export const metadata = {
-  title: "My Blog",
-  description: "Blog powered by Next.js + Prismic",
-};
-
 export default function RootLayout({
   children,
 }: {

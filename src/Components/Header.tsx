@@ -21,13 +21,13 @@ const Header = () => {
           <Link href="/contact" className="hover:text-black">Contact</Link>
         </nav>
 
-        <Image
+        {/* <Image
           src="/assets/images/header_image.jpg"
           width={1000}
           height={400}
           alt="header_image"
           className="object-fit mx-auto py-4 h-[400px]"
-        />
+        /> */}
         </div>
     </header>
   );

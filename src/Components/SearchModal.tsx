@@ -1,25 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-export default function SearchOverlay({
+export default function SearchModal({
   isOpen,
   onClose,
 }: {
   isOpen: boolean;
   onClose: () => void;
 }) {
-  const [keyword, setKeyword] = useState("");
   const router = useRouter();
+  const [keyword, setKeyword] = useState('');
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!keyword.trim()) return;
-    onClose(); // đóng modal trước
-    router.push(`/search?q=${encodeURIComponent(keyword.trim())}`);
-  };
+    if(!keyword.trim()) return;
+    router.push(`/search?query=${keyword.trim()}`)
+    onClose();
+  }
 
   if (!isOpen) return null;
 
@@ -35,7 +36,7 @@ export default function SearchOverlay({
 
       <form onSubmit={handleSubmit} className="w-full max-w-xl text-center">
         <h2 className="text-gray-400 text-2xl md:text-4xl font-light mb-6">
-          Typing and press <strong>Enter</strong> to search
+          Type and press <strong>Enter</strong> to search
         </h2>
         <input
           type="text"
