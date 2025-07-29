@@ -7,17 +7,27 @@ const Header = () => {
  text-black dark:bg-zinc-900 dark:text-white"
       role="banner"
     >
-      <div className="bg-white px-2 py-4 text-center dark:bg-zinc-900 dark:text-white">  
-        <h1 className="font-serif font-bold text-black text-6xl dark:bg-zinc-900 dark:text-white">
-          NextGame
-        </h1>
+      <div className="bg-white px-2 py-4 text-center dark:bg-zinc-900 dark:text-white">
+        <Link href="/">
+          <h1 className="font-serif font-bold text-black text-6xl dark:bg-zinc-900 dark:text-white">
+            NextGame
+          </h1>
+        </Link>
 
         {/*Menu*/}
         <nav className="hidden sm:flex mt-6 flex-wrap justify-center items-center gap-6 text-neutral-500 text-sm font-semibold dark:bg-zinc-900 dark:text-white">
-          <Link href="/" className="hover:text-black">Home</Link>
-          <Link href="/categories/allposts" className="hover:text-black">Category</Link>
-          <Link href="/authors/author" className="hover:text-black">About</Link>
-          <Link href="/contact/about" className="hover:text-black">Contact</Link>
+          <Link href="/" className="hover:text-black">
+            Home
+          </Link>
+          <Link href="/categories/allposts" className="hover:text-black">
+            Category
+          </Link>
+          <Link href="/authors/author" className="hover:text-black">
+            About
+          </Link>
+          <Link href="/contact/about" className="hover:text-black">
+            Contact
+          </Link>
         </nav>
 
         {/* <Image
@@ -27,9 +37,9 @@ const Header = () => {
           alt="header_image"
           className="object-fit mx-auto py-4 h-[400px]"
         /> */}
-        </div>
+      </div>
     </header>
   );
-}
+};
 
 export default Header;
