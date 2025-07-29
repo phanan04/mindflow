@@ -1,6 +1,6 @@
 
 import { createClient } from "../../../lib/prismicio";
-import CategoryArticleCard from "../../../Components/CategoryArticleCard";
+import CategoryArticleCard from "../../../Components/card/CategoryArticleCard";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import * as prismic from "@prismicio/client";

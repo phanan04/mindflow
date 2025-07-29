@@ -1,7 +1,6 @@
 "use client";
 
 import { X } from "lucide-react";
-import clsx from "clsx";
 
 export default function MenuModal({
   isOpen,
@@ -27,14 +26,14 @@ export default function MenuModal({
         <div className="flex justify-end p-4 dark:bg-bg-zinc-900 dark:text-white">
           <button onClick={onClose} aria-label="Đóng menu">
             <X size={24} />
-          </button>
+          </button> 
         </div>
 
         <nav className="flex flex-col gap-4 px-6 dark:bg-zinc-900 dark:text-white">
-          <a href="/" className="text-base hover:text-blue-600 ">Trang chủ</a>
-          <a href="/categories/allposts" className="text-base hover:text-blue-600">Danh mục</a>
-          <a href="/authors/about" className="text-base hover:text-blue-600">Tác giả</a>
-          <a href="/contact" className="text-base hover:text-blue-600">Liên hệ</a>
+          <a href="/" className="text-base hover:text-blue-600 ">Home</a>
+          <a href="/categories/allposts" className="text-base hover:text-blue-600">Category</a>
+          <a href="/authors/about" className="text-base hover:text-blue-600">Author</a>
+          <a href="/contact" className="text-base hover:text-blue-600">Contact</a>
         </nav>
       </div>
     </>

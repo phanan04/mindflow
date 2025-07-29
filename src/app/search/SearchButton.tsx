@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { Menu, Search, X } from "lucide-react";
-import MenuModal from "./MenuModal";
+import MenuModal from "../../Components/MenuModal";
 import SearchModal from "./SearchModal";
-import { ThemeToggle } from "./ThemeToggle";
+import { ThemeToggle } from "../../Components/theme/ThemeToggle";
 
 export default function SearchButton() {
   const [showMenu, setShowMenu] = useState(false);
@@ -21,7 +21,7 @@ export default function SearchButton() {
 
   return (
     <>
-      {/* Search button always at top */}
+      {/* Search button top */}
       <div className="fixed top-4 right-4 z-50">
         <button
           onClick={() => setOpenSearch(true)}

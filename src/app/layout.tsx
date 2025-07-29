@@ -1,7 +1,7 @@
 import Header from "@/Components/Header";
 import "./globals.css";
 import Footer from "@/Components/Footer";
-import SearchButton from "@/Components/SearchButton";
+import SearchButton from "@/app/search/SearchButton";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "next-themes";
 

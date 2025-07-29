@@ -1,6 +1,4 @@
-import { Search } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 
 const Header = () => {
   return (
@@ -14,11 +12,12 @@ const Header = () => {
           NextGame
         </h1>
 
-        <nav className="mt-6 flex flex-wrap justify-center items-center gap-6 text-neutral-500 text-sm font-semibold dark:bg-zinc-900 dark:text-white">
+        {/*Menu*/}
+        <nav className="hidden sm:flex mt-6 flex-wrap justify-center items-center gap-6 text-neutral-500 text-sm font-semibold dark:bg-zinc-900 dark:text-white">
           <Link href="/" className="hover:text-black">Home</Link>
           <Link href="/categories/allposts" className="hover:text-black">Category</Link>
-          <Link href="/authors/about" className="hover:text-black">About</Link>
-          <Link href="/contact" className="hover:text-black">Contact</Link>
+          <Link href="/authors/author" className="hover:text-black">About</Link>
+          <Link href="/contact/about" className="hover:text-black">Contact</Link>
         </nav>
 
         {/* <Image

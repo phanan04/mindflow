@@ -1,11 +1,9 @@
-// app/blog/[slug]/page.tsx
-
 import { createClient } from "@/lib/prismicio";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { formatDate } from "@/lib/formatDate";
 import { PrismicRichText } from "@prismicio/react";
-import { asText } from "@prismicio/helpers"; // ✅
+import { asText } from "@prismicio/helpers"; 
 import ShareButtons from "@/Components/ShareButtons";
 
 

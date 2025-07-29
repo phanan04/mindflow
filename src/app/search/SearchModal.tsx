@@ -25,7 +25,7 @@ export default function SearchModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-white z-[9999] flex items-center justify-center px-6">
+    <div className="fixed inset-0 bg-white z-[9999] flex items-center justify-center px-6 dark:bg-zinc-900 dark:text-white">
       <button
         onClick={onClose}
         className="absolute top-6 right-6 text-gray-800"
@@ -34,8 +34,8 @@ export default function SearchModal({
         <X size={24} />
       </button>
 
-      <form onSubmit={handleSubmit} className="w-full max-w-xl text-center">
-        <h2 className="text-gray-400 text-2xl md:text-4xl font-light mb-6">
+      <form onSubmit={handleSubmit} className="w-full max-w-xl text-center dark:bg-zinc-900 dark:text-white">
+        <h2 className="text-gray-400 text-2xl md:text-4xl font-light mb-6 ">
           Type and press <strong>Enter</strong> to search
         </h2>
         <input
