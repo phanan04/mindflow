@@ -1,6 +1,7 @@
 "use client";
 
 import { X } from "lucide-react";
+import Link from "next/link";
 
 export default function MenuModal({
   isOpen,
@@ -30,10 +31,10 @@ export default function MenuModal({
         </div>
 
         <nav className="flex flex-col gap-4 px-6 dark:bg-zinc-900 dark:text-white">
-          <a href="/" className="text-base hover:text-blue-600 ">Home</a>
-          <a href="/categories/allposts" className="text-base hover:text-blue-600">Category</a>
-          <a href="/authors/about" className="text-base hover:text-blue-600">Author</a>
-          <a href="/contact" className="text-base hover:text-blue-600">Contact</a>
+          <Link href="/" className="text-base hover:text-blue-600 ">Home</Link>
+          <Link href="/categories/allposts" className="text-base hover:text-blue-600">Category</Link>
+          <Link href="/authors/about" className="text-base hover:text-blue-600">Author</Link>
+          <Link href="/contact/contactme" className="text-base hover:text-blue-600">Contact</Link>
         </nav>
       </div>
     </>

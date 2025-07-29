@@ -3,9 +3,27 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { formatDate } from "@/lib/formatDate";
 import { PrismicRichText } from "@prismicio/react";
-import { asText } from "@prismicio/helpers"; 
+import { asText } from "@prismicio/helpers";
 import ShareButtons from "@/Components/ShareButtons";
 
+export const revalidate = 30
+
+export async function generateStaticParams() {
+  return [
+    {
+      slug: "god-of-war",
+    },
+    {
+      slug: "red-dead-redemption-2",
+    },
+    {
+      slug: "elden-ring",
+    },
+    {
+      slug: "the-legend-of-zelda-breath-of-the-wild",
+    },
+  ];
+}
 
 export default async function BlogPage({
   params,
@@ -21,22 +39,31 @@ export default async function BlogPage({
   return (
     <article className="w-full max-w-[1000px] mx-auto px-4 py-8 border">
       <div className="flex items-center space-x-3 mb-4">
-        {post.data.author && "data" in post.data.author && post.data.author.data?.avatar?.url ? (
+        {post.data.author &&
+        "data" in post.data.author &&
+        post.data.author.data?.avatar?.url ? (
           <Image
-            src={post.data.author.data.avatar.url || "/public/assets/images/default-avatar.png"}
+            src={
+              post.data.author.data.avatar.url ||
+              "/public/assets/images/default-avatar.png"
+            }
             width={24}
             height={24}
             alt={post.data.author.data.name || "Author"}
             className="rounded-full"
           />
         ) : null}
-        <p>{post.data.author && "data" in post.data.author ? post.data.author.data?.name : "Unknown Author"}</p>
-        <p className="text-sm text-gray-500">{post.data.date ? formatDate(post.data.date as string) : ""}</p>
+        <p>
+          {post.data.author && "data" in post.data.author
+            ? post.data.author.data?.name
+            : "Unknown Author"}
+        </p>
+        <p className="text-sm text-gray-500">
+          {post.data.date ? formatDate(post.data.date as string) : ""}
+        </p>
       </div>
 
-      <h1 className="text-3xl font-bold mb-4">
-        {asText(post.data.title)}
-      </h1>
+      <h1 className="text-3xl font-bold mb-4">{asText(post.data.title)}</h1>
 
       {post.data.coverImage?.url ? (
         <Image
@@ -49,7 +76,7 @@ export default async function BlogPage({
       ) : null}
 
       <div className="prose max-w-none">
-        <PrismicRichText field={post.data.content} /> 
+        <PrismicRichText field={post.data.content} />
       </div>
       <ShareButtons />
     </article>

@@ -26,7 +26,7 @@ export default function CategoryArticleCard({
 }: CategoryArticleCardProps) {
   return (
 
-    <div className="bg-white border overflow-hidden">
+    <div className="bg-white border">
       <Link href={`/blog/${slug}`}>
         {/* Cover Image */}
         <div className="aspect-video relative">

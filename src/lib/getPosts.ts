@@ -1,6 +1,8 @@
 import { createClient } from "./prismicio";
 import { asText } from "@prismicio/helpers";
 
+export const revalidate = 30
+
 export async function getPosts() {
   const client = createClient();
   const posts = await client.getAllByType("post", {

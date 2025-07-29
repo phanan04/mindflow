@@ -7,7 +7,7 @@ export default function Footer() {
           <h1>SUBSCRIBE VIA EMAIL</h1>
         </div>
         {/* Cột bên phải */}
-        <div className="flex flex-col gap-4 p-4 sm:w-full md:w-1/2 bg-white dark:bg-zinc-900 dark:text-white">
+        <div className="flex flex-col gap-4 p-4 w-full md:w-1/2 bg-white dark:bg-zinc-900 dark:text-white">
           <h3>Enter your email here</h3>
           <input type="email" className="py-2 px-4 w-full border" />
           <label className="flex items-center space-x-2 dark:bg-zinc-900 dark:text-white">

@@ -3,6 +3,9 @@ import CategoryArticleCard from "@/Components/card/CategoryArticleCard";
 import { getPosts } from "@/lib/getPosts";
 import Link from "next/link";
 
+
+
+
 export default async function HomePage() {
   const posts = await getPosts();
 

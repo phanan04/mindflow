@@ -16,16 +16,25 @@ const Header = () => {
 
         {/*Menu*/}
         <nav className="hidden sm:flex mt-6 flex-wrap justify-center items-center gap-6 text-neutral-500 text-sm font-semibold dark:bg-zinc-900 dark:text-white">
-          <Link href="/" className="hover:text-black">
+          <Link href="/" className="hover:text-black dark:hover:text-gray-500">
             Home
           </Link>
-          <Link href="/categories/allposts" className="hover:text-black">
+          <Link
+            href="/categories/allposts"
+            className="hover:text-black dark:hover:text-gray-500"
+          >
             Category
           </Link>
-          <Link href="/authors/author" className="hover:text-black">
+          <Link
+            href="/authors/about"
+            className="hover:text-black dark:hover:text-gray-500"
+          >
             About
           </Link>
-          <Link href="/contact/about" className="hover:text-black">
+          <Link
+            href="/contact/contactme"
+            className="hover:text-black dark:hover:text-gray-500"
+          >
             Contact
           </Link>
         </nav>
