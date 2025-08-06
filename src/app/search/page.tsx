@@ -1,6 +1,14 @@
 import CategoryArticleCard from "@/Components/card/CategoryArticleCard";
 import { getPostByKeyword } from "@/lib/getPostByKeyword";
-import { asText } from "@prismicio/helpers";
+import { createClient } from "@/lib/prismicio";
+import { Metadata } from "next";
+
+export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+  title: "Search",
+  description: "Search for blog posts",
+};
 
 export default async function SearchPage({
   searchParams,
@@ -22,8 +30,8 @@ export default async function SearchPage({
             <CategoryArticleCard
               key={post.id}
               slug={post.uid}
-              title={asText(post.data.title) || ""}
-              excerpt={asText(post.data.excerpt) || ""} 
+              title={post.data.title || ''}
+              excerpt={post.data.excerpt || ''} 
               coverImage={post.data.coverImage.url}
               author={{
                 name: post.data.author.data.name,

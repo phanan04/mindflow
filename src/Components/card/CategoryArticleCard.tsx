@@ -1,11 +1,12 @@
 import { FaHeart } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
+import { formatDate } from "@/lib/formatDate";
 
 type CategoryArticleCardProps = {
   slug: string;
-  title: string;
-  excerpt: string;
+  title: string | null;
+  excerpt: string | null;
   coverImage: string;
   author: {
     name: string;
@@ -30,7 +31,7 @@ export default function CategoryArticleCard({
       <Link href={`/blog/${slug}`}>
         {/* Cover Image */}
         <div className="aspect-video relative">
-          <Image src={coverImage} fill alt={title} className="object-cover" />
+          <Image src={coverImage} fill alt={title || ""} className="object-cover" />
         </div>
 
         {/* Content */}
@@ -73,13 +74,4 @@ export default function CategoryArticleCard({
       </Link>
     </div>
   );
-}
-
-function formatDate(dateStr: string): string {
-  const date = new Date(dateStr);
-  return date.toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
 }

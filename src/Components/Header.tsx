@@ -20,7 +20,7 @@ const Header = () => {
             Home
           </Link>
           <Link
-            href="/categories/allposts"
+            href="/categories/all-posts"
             className="hover:text-black dark:hover:text-gray-500"
           >
             Category
@@ -32,7 +32,7 @@ const Header = () => {
             About
           </Link>
           <Link
-            href="/contact/contactme"
+            href="/contact"
             className="hover:text-black dark:hover:text-gray-500"
           >
             Contact

@@ -1,16 +1,41 @@
 import { createClient } from "../../../lib/prismicio";
-import { PrismicRichText } from "@prismicio/react";
-import { FaEnvelope, FaFacebook, FaPinterest } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { Metadata } from "next";
 import Image from "next/image";
+import { asText } from "@prismicio/client";
 
-export default async function AuthorPage() {
+export const revalidate = 30;
+
+export async function generateMetadata({
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const client = createClient();
+  const [author] = await client.getAllByType("author");
 
+  return {
+    title: typeof author.data.name === 'string' ? author.data.name : asText(author.data.name) || '',
+    description: typeof author.data.bio === 'string' ? author.data.bio : asText(author.data.bio) || '',
+  };
+}
+
+export async function generateStaticParams() {
+  const client = createClient();
+  const authors = await client.getAllByType("author");
+
+  return authors.map((author) => ({
+    slug: author.uid,
+  }));
+}
+
+export default async function AuthorPage({
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const client = createClient();
   const [author] = await client.getAllByType("author");
 
   return (
-    <div className="max-w-screen-xl w-[1000px] mx-auto h-auto">
+      <div className="max-w-screen-xl w-[1000px] mx-auto h-auto">
       <h1 className="text-2xl font-bold text-center pb-4">ABOUT</h1>
       <div className="flex flex-row gap-4 w-full max-w-[1000px] mx-auto">
         {/* About Left */}
@@ -26,12 +51,12 @@ export default async function AuthorPage() {
                 height={100}
               />
                 <div className="flex flex-col">
-                    <p><b>{author.data.name}</b></p>
+                    <p><b>{typeof author.data.name === 'string' ? author.data.name : asText(author.data.name) || ''}</b></p>
                     <p><i>Author</i></p>
                 </div>
             </div>
             <div>
-              <PrismicRichText field={author.data.bio} />
+              <p>{typeof author.data.bio === 'string' ? author.data.bio : asText(author.data.bio) || ''}</p>
             </div>
           </div>
         </div>

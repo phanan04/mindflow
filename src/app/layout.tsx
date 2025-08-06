@@ -4,6 +4,12 @@ import Footer from "@/Components/Footer";
 import SearchButton from "@/app/search/SearchButton";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "next-themes";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "My blog",
+  description: "nextgame blog"
+}
 
 export default function RootLayout({
   children,

@@ -85,17 +85,6 @@ interface AuthorDocumentData {
   name: prismic.KeyTextField;
 
   /**
-   * Slug field in *Author*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: author.slug
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  slug: prismic.KeyTextField;
-
-  /**
    * Avatar field in *Author*
    *
    * - **Field Type**: Image
@@ -105,17 +94,6 @@ interface AuthorDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   avatar: prismic.ImageField<never>;
-
-  /**
-   * Bio field in *Author*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Author description or bio
-   * - **API ID Path**: author.bio
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  bio: prismic.RichTextField;
 
   /**
    * Email field in *Author*
@@ -138,6 +116,17 @@ interface AuthorDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   phone: prismic.KeyTextField;
+
+  /**
+   * Bio field in *Author*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Author description
+   * - **API ID Path**: author.bio
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  bio: prismic.KeyTextField;
 }
 
 /**
@@ -168,26 +157,15 @@ interface CategoryDocumentData {
   name: prismic.KeyTextField;
 
   /**
-   * Slug field in *Category*
+   * Summary field in *Category*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: category.slug
+   * - **API ID Path**: category.summary
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  slug: prismic.KeyTextField;
-
-  /**
-   * Summary field in *Category*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: category.summary
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  summary: prismic.RichTextField;
+  summary: prismic.KeyTextField;
 }
 
 /**
@@ -209,33 +187,39 @@ export type CategoryDocument<Lang extends string = string> =
 /**
  * Item in *Post → Tags*
  */
-export type PostDocumentDataTagsItem = object;
+export interface PostDocumentDataTagsItem {}
+
+/**
+ * Item in *Post → Category*
+ */
+export interface PostDocumentDataCategoryItem {
+  /**
+   * Category field in *Post → Category*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: post.category[].category
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  category: ContentRelationshipFieldWithData<
+    [{ id: "category"; fields: ["name", "summary"] }]
+  >;
+}
 
 /**
  * Content for Post documents
  */
 interface PostDocumentData {
   /**
-   * title field in *Post*
+   * Title field in *Post*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: post.title
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  title: prismic.RichTextField;
-
-  /**
-   * Excerpt field in *Post*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Short summary
-   * - **API ID Path**: post.excerpt
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  excerpt: prismic.RichTextField;
+  title: prismic.KeyTextField;
 
   /**
    * Cover Image field in *Post*
@@ -284,19 +268,6 @@ interface PostDocumentData {
   >;
 
   /**
-   * Category field in *Post*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: post.category
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
-   */
-  category: ContentRelationshipFieldWithData<
-    [{ id: "category"; fields: ["name", "slug", "summary"] }]
-  >;
-
-  /**
    * Tags field in *Post*
    *
    * - **Field Type**: Group
@@ -306,6 +277,28 @@ interface PostDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
   tags: prismic.GroupField<Simplify<PostDocumentDataTagsItem>>;
+
+  /**
+   * Excerpt field in *Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: post.excerpt
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  excerpt: prismic.KeyTextField;
+
+  /**
+   * Category field in *Post*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: post.category[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  category: prismic.GroupField<Simplify<PostDocumentDataCategoryItem>>;
 }
 
 /**
@@ -350,6 +343,7 @@ declare module "@prismicio/client" {
       PostDocument,
       PostDocumentData,
       PostDocumentDataTagsItem,
+      PostDocumentDataCategoryItem,
       AllDocumentTypes,
     };
   }

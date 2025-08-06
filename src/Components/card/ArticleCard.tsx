@@ -1,14 +1,12 @@
 "use client";
 import { formatDate } from "@/lib/formatDate";
-import { FaHeart } from "react-icons/fa";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import Link from "next/link";
 
 type ArticleCardProps = {
   slug: string;
-  title: string;
-  excerpt: string;
+  title: string | null
+  excerpt: string  | null;
   coverImage: string;
   author: {
     name: string;
@@ -25,11 +23,6 @@ export default function ArticleCard({
   author,
   date,
 }: ArticleCardProps) {
-  const [liked, setLiked] = useState(false);
-
-  const toggleLike = () => {
-    setLiked((prev) => !prev);
-  };
 
   return (
     
@@ -41,7 +34,7 @@ export default function ArticleCard({
                 src={coverImage}
                 width={500}
                 height={300}
-                alt={title}
+                alt={title || ""}
                 className="object-cover"
               />
             </div>

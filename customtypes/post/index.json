@@ -13,21 +13,10 @@
         }
       },
       "title": {
-        "type": "StructuredText",
+        "type": "Text",
         "config": {
-          "label": "title",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-        }
-      },
-      "excerpt": {
-        "type": "StructuredText",
-        "config": {
-          "label": "Excerpt",
-          "placeholder": "Short summary",
-          "allowTargetBlank": true,
-          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          "label": "Title",
+          "placeholder": ""
         }
       },
       "coverImage": {
@@ -68,26 +57,42 @@
           ]
         }
       },
-      "category": {
-        "type": "Link",
-        "config": {
-          "label": "Category",
-          "select": "document",
-          "repeat": false,
-          "customtypes": [
-            {
-              "id": "category",
-              "fields": ["name", "slug", "summary"]
-            }
-          ]
-        }
-      },
       "tags": {
         "type": "Group",
         "config": {
           "label": "Tags",
           "repeat": true,
           "fields": {}
+        }
+      },
+      "excerpt": {
+        "type": "Text",
+        "config": {
+          "label": "Excerpt",
+          "placeholder": ""
+        }
+      },
+      "category": {
+        "type": "Group",
+        "config": {
+          "label": "Category",
+          "repeat": true,
+          "fields": {
+            "category": {
+              "type": "Link",
+              "config": {
+                "label": "Category",
+                "select": "document",
+                "repeat": false,
+                "customtypes": [
+                  {
+                    "id": "category",
+                    "fields": ["name", "summary"]
+                  }
+                ]
+              }
+            }
+          }
         }
       }
     }

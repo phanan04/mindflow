@@ -1,8 +1,20 @@
-import { createClient } from "../../../lib/prismicio";
-import { PrismicRichText } from "@prismicio/react";
+import { Metadata } from "next";
+import { createClient } from "../../lib/prismicio";
 import { FaEnvelope, FaFacebook, FaPinterest } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import Image from "next/image";
+
+export const revalidate = 30;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const client = createClient();
+  const [contact] = await client.getAllByType("author");
+
+  return {
+    title: contact.data.name ,
+    description: contact.data.bio,
+  };
+}
+
 
 export default async function ContactPage() {
   const client = createClient();
@@ -15,7 +27,7 @@ export default async function ContactPage() {
       <div className="flex flex-row gap-4 w-full max-w-[1000px] mx-auto">
           <hr />
           <div className="flex flex-row w-full gap-4">
-            <div className="flex flex-col w-1/2">
+            <div className="flex flex-col">
               <p>{author.data.email}</p>
               <p>{author.data.phone}</p>
               <div className="flex flex-row gap-2">

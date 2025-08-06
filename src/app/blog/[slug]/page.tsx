@@ -3,26 +3,41 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { formatDate } from "@/lib/formatDate";
 import { PrismicRichText } from "@prismicio/react";
-import { asText } from "@prismicio/helpers";
+import { isFilled } from "@prismicio/helpers";
 import ShareButtons from "@/Components/ShareButtons";
+import { Metadata } from "next";
+import { asText } from "@prismicio/client";
 
-export const revalidate = 30
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const client = createClient();
+  const post = await client.getByUID("post", slug);
+
+  return {
+    title: typeof post.data.title === 'string' ? post.data.title : asText(post.data.title) || '',
+    description: typeof post.data.excerpt === 'string' ? post.data.excerpt : asText(post.data.excerpt) || '',
+    openGraph: {
+      title: typeof post.data.title === 'string' ? post.data.title : asText(post.data.title) || '',
+      description: typeof post.data.excerpt === 'string' ? post.data.excerpt : asText(post.data.excerpt) || '',
+      images: post.data.coverImage?.url ? [post.data.coverImage.url] : [],
+      type: "article",
+    },
+  };
+}
+
+export const revalidate = 30;
 
 export async function generateStaticParams() {
-  return [
-    {
-      slug: "god-of-war",
-    },
-    {
-      slug: "red-dead-redemption-2",
-    },
-    {
-      slug: "elden-ring",
-    },
-    {
-      slug: "the-legend-of-zelda-breath-of-the-wild",
-    },
-  ];
+  const client = createClient();
+  const posts = await client.getAllByType("post");
+
+  return posts.map((post) => ({
+    slug: post.uid,
+  }));
 }
 
 export default async function BlogPage({
@@ -32,30 +47,29 @@ export default async function BlogPage({
 }) {
   const { slug } = await params;
   const client = createClient();
-  const post = await client.getByUID("post", slug);
+  const post = await client.getByUID("post", slug, {
+  });
 
   if (!post) return notFound();
 
   return (
     <article className="w-full max-w-[1000px] mx-auto px-4 py-8 border">
       <div className="flex items-center space-x-3 mb-4">
-        {post.data.author &&
-        "data" in post.data.author &&
-        post.data.author.data?.avatar?.url ? (
+        {isFilled.contentRelationship(post?.data?.author) ? (
           <Image
             src={
-              post.data.author.data.avatar.url ||
+              post.data.author.data?.avatar.url ||
               "/public/assets/images/default-avatar.png"
             }
             width={24}
             height={24}
-            alt={post.data.author.data.name || "Author"}
+            alt={post.data.author?.data?.name || "Author"}
             className="rounded-full"
           />
         ) : null}
         <p>
           {post.data.author && "data" in post.data.author
-            ? post.data.author.data?.name
+            ? post.data.author.data?.name || "Unknown Author"
             : "Unknown Author"}
         </p>
         <p className="text-sm text-gray-500">
@@ -63,14 +77,16 @@ export default async function BlogPage({
         </p>
       </div>
 
-      <h1 className="text-3xl font-bold mb-4">{asText(post.data.title)}</h1>
+      <h1 className="text-3xl font-bold mb-4">
+        {typeof post.data.title === 'string' ? post.data.title : asText(post.data.title) || ''}
+      </h1>
 
       {post.data.coverImage?.url ? (
         <Image
           src={post.data.coverImage.url}
           width={1000}
           height={500}
-          alt={asText(post.data.title)}
+          alt={typeof post.data.title === 'string' ? post.data.title : asText(post.data.title) || ''}
           className="object-cover mb-6"
         />
       ) : null}
