@@ -32,9 +32,9 @@ export default function MenuModal({
 
         <nav className="flex flex-col gap-4 px-6 dark:bg-zinc-900 dark:text-white">
           <Link href="/" className="text-base hover:text-blue-600 ">Home</Link>
-          <Link href="/categories/allposts" className="text-base hover:text-blue-600">Category</Link>
-          <Link href="/authors/about" className="text-base hover:text-blue-600">Author</Link>
-          <Link href="/contact/contactme" className="text-base hover:text-blue-600">Contact</Link>
+          <Link href="/categories/all-posts" className="text-base hover:text-blue-600">Category</Link>
+          <Link href="/authors/phan-an" className="text-base hover:text-blue-600">Author</Link>
+          <Link href="/contact" className="text-base hover:text-blue-600">Contact</Link>
         </nav>
       </div>
     </>
