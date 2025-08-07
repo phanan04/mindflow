@@ -59,7 +59,6 @@ export default function ArticleCard({
               <div>
                 <hr />
                 <div className="flex flex-row justify-between text-sm pt-2">
-                  <p>40 views</p>
                 </div>
               </div>
             </div>

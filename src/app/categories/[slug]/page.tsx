@@ -12,11 +12,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const client = createClient();
-
   const category = await client.getByUID("category", slug);
+
   return {
     title: category.data.name,
     description: category.data.summary,
+    openGraph: {
+      title: category.data.name || '',
+      description: category.data.summary || '',
+      type: "article"
+    }
   };
 }
 

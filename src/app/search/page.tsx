@@ -1,9 +1,6 @@
 import CategoryArticleCard from "@/Components/card/CategoryArticleCard";
 import { getPostByKeyword } from "@/lib/getPostByKeyword";
-import { createClient } from "@/lib/prismicio";
 import { Metadata } from "next";
-
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: "Search",
