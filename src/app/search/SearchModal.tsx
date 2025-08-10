@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { X } from "lucide-react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import {useRouter } from "next/navigation";
 
 export default function SearchModal({
   isOpen,
@@ -28,6 +28,7 @@ export default function SearchModal({
     <div className="fixed inset-0 bg-white z-[9999] flex items-center justify-center px-6 dark:bg-zinc-900 dark:text-white">
       <button
         onClick={onClose}
+        type="button"
         className="absolute top-6 right-6 text-gray-800"
         aria-label="Close"
       >

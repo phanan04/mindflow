@@ -26,7 +26,7 @@ export default async function ContactPage() {
   const [author] = await client.getAllByType("author");
 
   return (
-    <div className="max-w-screen-xl mx-auto h-auto">
+    <div className="max-w-screen-xl mx-auto h-auto p-5">
       <h1 className="text-2xl font-bold text-center pb-q4">CONTACT</h1>
       <div className="flex flex-col sm:flex-row gap-4 max-w-[1000px] mx-auto mt-4">
         <hr />
