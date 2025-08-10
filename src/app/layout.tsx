@@ -17,8 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="dark:bg-zinc-900 dark:text-white bg-cover bg-center bg-fixed bg-no-repeat" 
-            style={{backgroundImage: "url('/assets/images/bg-1.jpg')"}}>
+      <body className="dark:bg-zinc-900 dark:text-white">
         <div className="min-h-screen bg-white/90 dark:bg-zinc-900/90 flex flex-col">
           <ThemeProvider
             attribute="class"
