@@ -4,12 +4,12 @@ import Link from "next/link";
 const Header = () => {
   return (
     <header
-      className="w-full border-b border-gray-200 py-2 px-4 text-black dark:bg-zinc-900 dark:text-white"
+      className="w-full py-2 px-4 text-black dark:bg-zinc-900/40 dark:text-white"
       role="banner"
     >
-      <div className="max-w-[1200px] mx-auto flex items-center justify-between relative">
+      <div className="mx-auto flex items-center justify-between relative">
         {/* Cột trái: Menu */}
-        <div className="flex items-center gap-6 text-sm font-semibold text-neutral-600 dark:text-neutral-300 w-1/3">
+        <div className="flex items-center justify-start gap-6 text-sm font-semibold text-neutral-600 dark:text-neutral-300 w-1/3">
           <nav className="hidden sm:flex items-center gap-6">
             <Link href="/" className="hover:text-black dark:hover:text-white">
               Home

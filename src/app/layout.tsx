@@ -17,20 +17,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="dark:bg-zinc-900 dark:text-white">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
-            <main className="p-2 dark:bg-zinc-900 dark:text-white">
-              {children}
-              <SpeedInsights />
-            </main>
-          <Footer />
-        </ThemeProvider>
+      <body className="dark:bg-zinc-900 dark:text-white bg-cover bg-center bg-fixed bg-no-repeat" 
+            style={{backgroundImage: "url('/assets/images/bg-1.jpg')"}}>
+        <div className="min-h-screen bg-white/90 dark:bg-zinc-900/90 flex flex-col">
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Header />
+              <main className="p-2 dark:bg-transparent dark:text-white flex-1">
+                {children}
+                <SpeedInsights />
+              </main>
+            <Footer />
+          </ThemeProvider>
+        </div>
       </body>
     </html>
   );

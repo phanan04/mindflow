@@ -2,22 +2,43 @@
 
 import { useState } from "react";
 import { Search } from "lucide-react";
-import SearchModal from "./SearchModal";
+import { useRouter } from "next/navigation";
 
 export default function SearchButton() {
-  const [openSearch, setOpenSearch] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const router = useRouter();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if(!searchValue.trim()) return;
+    router.push(`/search?query=${searchValue.trim()}`);
+    setSearchValue(""); 
+  };
+
+  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSubmit(e as any);
+    }
+  };
 
   return (
     <>
+    <form onSubmit={handleSubmit} className="flex items-center bg-white dark:bg-white rounded-xl overflow-hidden shadow-sm max-w-sm">
       <button
-        onClick={() => setOpenSearch(true)}
-        className="bg-white p-3 transition-shadow dark:bg-zinc-900 dark:text-white"
+        type="submit"
+        className="p-1.5 text-gray-600 dark:text-black hover:text-gray-800 transition-colors"
       >
-        <Search size={20} />
+        <Search size={16} />
       </button>
-     
-      {/* Search Modal */}
-      <SearchModal isOpen={openSearch} onClose={() => setOpenSearch(false)} />
+      <input
+        type="text"
+        placeholder="Search..."
+        value={searchValue}
+        onChange={(e) => setSearchValue(e.target.value)}
+        onKeyDown={handleInputKeyDown}
+        className="flex-1 p-1.5 bg-transparent text-black dark:text-black border-none outline-none text-sm"
+      />
+    </form>
     </>
   );
 }

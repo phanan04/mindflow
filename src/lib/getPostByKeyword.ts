@@ -6,18 +6,16 @@ export async function getPostByKeyword(query?: string) {
 
   if (!query || query.trim() === "") return [];
 
-  const [byTitle, byExcerpt] = await Promise.all([
+  const [byTitle] = await Promise.all([
     client.getAllByType("post", {
       predicates: [prismic.predicate.fulltext("my.post.title", query),],
     }),
-    client.getAllByType("post", {
-      predicates: [prismic.predicate.fulltext("my.post.excerpt", query)],
-    }),
+   
   ]);
 
   const allPostsMap = new Map();
 
-  [...byTitle, ...byExcerpt].forEach((post) => {
+  [...byTitle].forEach((post) => {
     allPostsMap.set(post.id, post);
   });
 

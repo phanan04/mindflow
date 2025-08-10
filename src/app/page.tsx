@@ -16,7 +16,7 @@ export default async function HomePage() {
   const posts = await getPosts();
 
   return (
-    <div className="w-full max-w-screen-xl mx-auto px-4 pb-4 md:px-6 dark:bg-zinc-900 dark:text-white">
+    <div className="w-full max-w-screen-xl mx-auto px-4 pb-4 md:px-6 dark:text-white">
       <h1 className="text-center text-3xl py-4 text-black dark:text-white">
         Feature game
       </h1>
