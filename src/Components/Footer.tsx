@@ -12,7 +12,7 @@ export default function Footer() {
           method="POST"
           className="flex flex-col gap-4 p-4 w-full md:w-1/2  dark:text-white">
             <h3>Enter your email here</h3>
-            <input type="email" name = "email" className="py-2 px-4 w-full border" />
+            <input type="email" name = "email" className="py-2 px-4 w-full border" aria-label=""/>
             <label className="flex items-center space-x-2  dark:text-white">
               <input type="checkbox" name="subscribe" value="Yes" />
               <span>Yes, subscribe me to your newsletter</span>

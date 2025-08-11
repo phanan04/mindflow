@@ -25,6 +25,7 @@ export default function SearchButton() {
     <>
     <form onSubmit={handleSubmit} className="flex items-center bg-white dark:bg-white rounded-xl overflow-hidden shadow-sm max-w-sm">
       <button
+        aria-label="Open menu"
         type="submit"
         className="p-1.5 text-gray-600 dark:text-black hover:text-gray-800 transition-colors"
       >
