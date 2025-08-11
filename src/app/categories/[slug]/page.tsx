@@ -77,8 +77,8 @@ export default async function CategoryPage({ params }: Props) {
   };
 
   const allPosts = await client.getAllByType("post", queryOptions);
-  const isAllPosts = categoryUid === "all-posts";
 
+  const isAllPosts = categoryUid === "all-posts";
   if (!isAllPosts) {
     category = await client.getByUID("category", categoryUid);
     pageTitle = category?.data.name || categoryUid;
