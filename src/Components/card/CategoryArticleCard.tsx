@@ -27,7 +27,7 @@ export default function CategoryArticleCard({
 }: CategoryArticleCardProps) {
   return (
 
-    <div className="bg-white border">
+    <div className="bg-white border border-gray-100 dark:border-zinc-800 shadow hover:shadow-xl hover:border-gray-300 transition-all">
       <Link href={`/blog/${slug}`}>
         {/* Cover Image */}
         <div className="aspect-video relative">

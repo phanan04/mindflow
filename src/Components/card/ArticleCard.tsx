@@ -26,7 +26,7 @@ export default function ArticleCard({
 
   return (
     
-      <section className="flex flex-col bg-white w-full max-w-[1000px] h-auto mx-auto border ">
+      <section className="flex flex-col bg-white w-full max-w-[1000px] h-auto mx-auto border border-gray-100 dark:border-zinc-800 shadow hover:shadow-2xl hover:border-gray-300 transition-all ">
         <Link href={`/blog/${slug}`}>
           <div className="flex flex-row bg-white border dark:border-black">
             <div className="md:w-1/2">
