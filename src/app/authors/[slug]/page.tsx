@@ -58,7 +58,7 @@ export default async function AuthorPage({}: {
             ABOUT ME
           </h3>
           <hr className="my-2 border-gray-300 dark:border-gray-600" />
-          <div className="flex flex-col md:flex-row gap-4 items-center md:items-start">
+          <div className="flex flex-row md:flex-row gap-4 items-center md:items-start">
             <Image
               src={
                 author.data.avatar.url || "/assets/images/default-avatar.png"
