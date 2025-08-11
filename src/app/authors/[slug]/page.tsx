@@ -5,21 +5,32 @@ import { asText } from "@prismicio/client";
 
 export const revalidate = 30;
 
-export async function generateMetadata({
-}: {
+export async function generateMetadata({}: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const client = createClient();
   const [author] = await client.getAllByType("author");
 
   return {
-    title: typeof author.data.name === 'string' ? author.data.name : asText(author.data.name) || '',
-    description: typeof author.data.bio === 'string' ? author.data.bio : asText(author.data.bio) || '',
+    title:
+      typeof author.data.name === "string"
+        ? author.data.name
+        : asText(author.data.name) || "",
+    description:
+      typeof author.data.bio === "string"
+        ? author.data.bio
+        : asText(author.data.bio) || "",
     openGraph: {
-      title: typeof author.data.name === 'string' ? author.data.name : asText(author.data.name) || '',
-      description: typeof author.data.bio === 'string' ? author.data.bio : asText(author.data.bio) || '',
-      type: "profile"
-    }
+      title:
+        typeof author.data.name === "string"
+          ? author.data.name
+          : asText(author.data.name) || "",
+      description:
+        typeof author.data.bio === "string"
+          ? author.data.bio
+          : asText(author.data.bio) || "",
+      type: "profile",
+    },
   };
 }
 
@@ -32,37 +43,45 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function AuthorPage({
-}: {
+export default async function AuthorPage({}: {
   params: Promise<{ slug: string }>;
 }) {
   const client = createClient();
   const [author] = await client.getAllByType("author");
 
   return (
-      <div className="max-w-screen-xl mx-auto h-auto">
-      <h1 className="text-2xl font-bold text-center pb-4">ABOUT</h1>
-      <div className="flex flex-row gap-4 w-full max-w-[1000px] mx-auto">
-        <div className="flex flex-col gap-2">
-          <h3><b>ABOUT ME</b></h3>
-          <hr />
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-row gap-2">
-              <Image
-                src={author.data.avatar.url || "/public/assets/images/default-avatar.png"}
-                alt={author.data.avatar.alt || "Author"}
-                width={100}
-                height={100}
-              />
-                <div className="flex flex-col">
-                    <p><b>{typeof author.data.name === 'string' ? author.data.name : asText(author.data.name) || ''}</b></p>
-                    <p><i>Author</i></p>
-                </div>
-            </div>
+    <div className="max-w-screen-xl mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold text-center pb-6">ABOUT</h1>
+      <div className="w-full max-w-[1000px] mx-auto flex flex-col gap-6">
+        <div>
+          <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-200">
+            ABOUT ME
+          </h3>
+          <hr className="my-2 border-gray-300 dark:border-gray-600" />
+          <div className="flex flex-col md:flex-row gap-4 items-center md:items-start">
+            <Image
+              src={
+                author.data.avatar.url || "/assets/images/default-avatar.png"
+              }
+              alt={author.data.avatar.alt || "Author"}
+              width={100}
+              height={100}
+              className="rounded-full object-cover border shadow-sm"
+            />
             <div>
-              <p>{typeof author.data.bio === 'string' ? author.data.bio : asText(author.data.bio) || ''}</p>
+              <p className="font-bold">
+                {typeof author.data.name === "string"
+                  ? author.data.name
+                  : asText(author.data.name) || ""}
+              </p>
+              <p className="italic text-gray-500">Author</p>
             </div>
           </div>
+          <p className="mt-4 leading-relaxed text-gray-700 dark:text-gray-300">
+            {typeof author.data.bio === "string"
+              ? author.data.bio
+              : asText(author.data.bio) || ""}
+          </p>
         </div>
       </div>
     </div>
