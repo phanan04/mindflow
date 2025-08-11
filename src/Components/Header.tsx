@@ -28,24 +28,24 @@ const Header = () => {
           </button>
           
           <nav className="hidden md:flex items-center gap-6">
-            <Link href="/" className="hover:text-black dark:hover:text-white">
+            <Link href="/" className="hover:text-blue-500 dark:hover:text-white">
               Home
             </Link>
             <Link
               href="/categories/all-posts"
-              className="hover:text-black dark:hover:text-white"
+              className="hover:text-blue-500 dark:hover:text-white"
             >
               Category
             </Link>
             <Link
               href="/authors/about"
-              className="hover:text-black dark:hover:text-white"
+              className="hover:text-blue-500 dark:hover:text-white"
             >
               About
             </Link>
             <Link
               href="/contact"
-              className="hover:text-black dark:hover:text-white"
+              className="hover:text-blue-500 dark:hover:text-white"
             >
               Contact
             </Link>
@@ -54,7 +54,7 @@ const Header = () => {
 
         <div className="absolute left-1/2 transform -translate-x-1/2">
           <Link href="/">
-            <h1 className="font-serif font-bold text-4xl text-white dark:text-white">
+            <h1 className="font-serif font-bold text-4xl hover:text-blue-500 text-white dark:text-white">
               NextGame
             </h1>
           </Link>
