@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="bg-gray-100 w-full mx-auto px-4 border-t border-zinc-800 dark:bg-zinc-800 dark:text-white ">
-      <div className="max-w-[1000px] mx-auto flex flex-col md:flex-row gap-6 md:gap-0 py-8">
+      <div className="max-w-[1000px] mx-auto flex flex-col md:flex-row gap-6 md:gap-0 py-2">
         {/* Cột bên trái */}
         <div className="flex flex-col w-1/2 gap-4 p-4 dark:text-white">
           <h1>SUBSCRIBE VIA EMAIL</h1>

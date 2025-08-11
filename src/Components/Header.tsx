@@ -1,17 +1,33 @@
+"use client";
+
 import SearchButton from "@/app/search/SearchButton";
 import Link from "next/link";
 import { ThemeToggle } from "./theme/ThemeToggle";
+import MenuModal from "./MenuModal";
+import { useState } from "react";
+import { Menu } from "lucide-react";
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <header
-      className="w-full py-2 px-4 bg-black text-white dark:bg-zinc-800 dark:text-white"
+      className="w-full py-2 px-4 bg-black text-white dark:bg-zinc-800 dark:text-white gap-2"
       role="banner"
     >
       <div className="mx-auto flex items-center justify-between relative">
-        {/* Cột trái: Menu */}
+        {/*  Menu */}
         <div className="flex items-center justify-start gap-6 text-sm font-semibold text-white dark:text-neutral-300 w-1/3">
-          <nav className="hidden sm:flex items-center gap-6">
+          {/* hamburger button */}
+          <button
+            onClick={() => setIsMenuOpen(true)}
+            className="md:hidden p-2 hover:bg-gray-700 rounded"
+            aria-label="Mở menu"
+          >
+            <Menu size={24} />
+          </button>
+          
+          <nav className="hidden md:flex items-center gap-6">
             <Link href="/" className="hover:text-black dark:hover:text-white">
               Home
             </Link>
@@ -44,11 +60,14 @@ const Header = () => {
           </Link>
         </div>
 
-        <div className="flex justify-end items-center gap-4 text-lg text-neutral-600 hover:text-blue-700 dark:text-neutral-300 w-1/3">
+        <div className="hidden md:flex justify-end items-center gap-2 text-lg text-neutral-600 hover:text-blue-700 dark:text-neutral-300 w-1/3">
           <ThemeToggle />
           <SearchButton />
         </div>
       </div>
+
+      {/* MenuModal */}
+      <MenuModal isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </header>
   );
 };

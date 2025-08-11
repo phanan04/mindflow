@@ -36,7 +36,7 @@ export default function SearchButton() {
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
         onKeyDown={handleInputKeyDown}
-        className="flex-1 p-1.5 bg-transparent text-black dark:text-black border-none outline-none text-sm"
+        className="flex-1 p-1.5 bg-transparent text-black dark:text-black border-none outline-none text-sm "
       />
     </form>
     </>

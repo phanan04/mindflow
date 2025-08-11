@@ -18,10 +18,10 @@ export async function generateMetadata({
     title: category.data.name,
     description: category.data.summary,
     openGraph: {
-      title: category.data.name || '',
-      description: category.data.summary || '',
-      type: "article"
-    }
+      title: category.data.name || "",
+      description: category.data.summary || "",
+      type: "article",
+    },
   };
 }
 
@@ -84,8 +84,8 @@ export default async function CategoryPage({ params }: Props) {
     pageTitle = category?.data.name || categoryUid;
   }
 
-  const prismicPosts = isAllPosts 
-    ? allPosts 
+  const prismicPosts = isAllPosts
+    ? allPosts
     : allPosts.filter((post) => {
         const postCategories = post.data.category || [];
         return postCategories.some((cat: any) => {
@@ -108,7 +108,10 @@ export default async function CategoryPage({ params }: Props) {
         },
       },
       date: post.data.date || undefined,
-      category: post.data.category?.map((cat: any) => cat?.category?.uid).filter(Boolean) || [],
+      category:
+        post.data.category
+          ?.map((cat: any) => cat?.category?.uid)
+          .filter(Boolean) || [],
     },
   }));
 
@@ -117,22 +120,21 @@ export default async function CategoryPage({ params }: Props) {
   return (
     <div className="w-full max-w-[1000px] mx-auto px-4 py-8">
       {/* CATEGORY MENU */}
-      <div className="flex flex-row gap-4 justify-center pb-8 flex-wrap">
+      <div className="flex flex-row gap-4 justify-center pb-4 flex-wrap">
         {allCategories.map((cat) => (
           <Link
             key={cat.uid}
             href={`/categories/${cat.uid}`}
-            className={`text-xl hover:text-blue-500 ${categoryUid === cat.uid ? "text-blue-500 font-bold" : ""}`}
+            className={`px-4 py-1 rounded-full text-sm font-medium transition-colors duration-200 ${
+              categoryUid === cat.uid
+                ? "bg-blue-500 text-white shadow"
+                : "bg-gray-200 text-gray-700 hover:bg-blue-100 hover:text-blue-500"
+            }`}
           >
             {cat.uid === "all-posts" ? "All Posts" : cat.data.name}
           </Link>
         ))}
       </div>
-
-      {/* CATEGORY TITLE */}
-      <h2 className="text-2xl font-bold text-center pb-6 uppercase">
-        {pageTitle}
-      </h2>
 
       {/* POSTS GRID */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -140,8 +142,8 @@ export default async function CategoryPage({ params }: Props) {
           <CategoryArticleCard
             slug={post.uid}
             key={post.uid}
-            title={post.data.title || ''}
-            excerpt={post.data.excerpt || ''}
+            title={post.data.title || ""}
+            excerpt={post.data.excerpt || ""}
             coverImage={post.data.coverImage.url ?? "/fallback.jpg"}
             author={{
               name: post.data.author?.data?.name ?? "Unknown Author",
