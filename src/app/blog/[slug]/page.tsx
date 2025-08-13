@@ -54,7 +54,7 @@ export default async function BlogPage({
   if (!post) return notFound();
 
   return (
-    <article className="w-full max-w-[1000px] mx-auto px-4 py-8 border flex-1">
+    <article className="w-full max-w-[1000px] mx-auto px-4 py-8 flex-1">
       <div className="flex items-center space-x-3 mb-4">
         {isFilled.contentRelationship(post?.data?.author) ? (
           <Image
