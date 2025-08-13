@@ -73,26 +73,17 @@
         }
       },
       "category": {
-        "type": "Group",
+        "type": "Link",
         "config": {
           "label": "Category",
-          "repeat": true,
-          "fields": {
-            "category": {
-              "type": "Link",
-              "config": {
-                "label": "Category",
-                "select": "document",
-                "repeat": false,
-                "customtypes": [
-                  {
-                    "id": "category",
-                    "fields": ["name", "summary"]
-                  }
-                ]
-              }
+          "select": "document",
+          "repeat": false,
+          "customtypes": [
+            {
+              "id": "category",
+              "fields": ["name", "uid", "summary"]
             }
-          }
+          ]
         }
       }
     }

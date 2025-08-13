@@ -190,23 +190,6 @@ export type CategoryDocument<Lang extends string = string> =
 export interface PostDocumentDataTagsItem {}
 
 /**
- * Item in *Post → Category*
- */
-export interface PostDocumentDataCategoryItem {
-  /**
-   * Category field in *Post → Category*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: post.category[].category
-   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
-   */
-  category: ContentRelationshipFieldWithData<
-    [{ id: "category"; fields: ["name", "summary"] }]
-  >;
-}
-
-/**
  * Content for Post documents
  */
 interface PostDocumentData {
@@ -292,13 +275,13 @@ interface PostDocumentData {
   /**
    * Category field in *Post*
    *
-   * - **Field Type**: Group
+   * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
-   * - **API ID Path**: post.category[]
+   * - **API ID Path**: post.category
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
    */
-  category: prismic.GroupField<Simplify<PostDocumentDataCategoryItem>>;
+  category: prismic.ContentRelationshipField;
 }
 
 /**
@@ -343,7 +326,6 @@ declare module "@prismicio/client" {
       PostDocument,
       PostDocumentData,
       PostDocumentDataTagsItem,
-      PostDocumentDataCategoryItem,
       AllDocumentTypes,
     };
   }

@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/prismicio";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import { formatDate } from "@/lib/formatDate";
 import { PrismicRichText } from "@prismicio/react";
 import { isFilled } from "@prismicio/helpers";
@@ -18,11 +19,11 @@ export async function generateMetadata({
   const post = await client.getByUID("post", slug);
 
   return {
-    title: typeof post.data.title === 'string' ? post.data.title : asText(post.data.title) || '',
-    description: typeof post.data.excerpt === 'string' ? post.data.excerpt : asText(post.data.excerpt) || '',
+    title:  post.data.title || '',
+    description: post.data.excerpt || '',
     openGraph: {
-      title: typeof post.data.title === 'string' ? post.data.title : asText(post.data.title) || '',
-      description: typeof post.data.excerpt === 'string' ? post.data.excerpt : asText(post.data.excerpt) || '',
+      title: post.data.title || '',
+      description: post.data.excerpt || '',
       images: post.data.coverImage?.url ? [post.data.coverImage.url] : [],
       type: "article",
     },
@@ -67,11 +68,16 @@ export default async function BlogPage({
             className="rounded-full"
           />
         ) : null}
-        <p>
-          {post.data.author && "data" in post.data.author
-            ? post.data.author.data?.name || "Unknown Author"
-            : "Unknown Author"}
-        </p>
+        {post.data.author && "data" in post.data.author && post.data.author.data ? (
+          <Link 
+            href={`/authors/${post.data.author.uid}`}
+            className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+          >
+            {post.data.author.data.name || "Unknown Author"}
+          </Link>
+        ) : (
+          <p>Unknown Author</p>
+        )}
         <p className="text-sm text-gray-500">
           {post.data.date ? formatDate(post.data.date as string) : ""}
         </p>

@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <header
-      className="w-full py-2 px-4 bg-black text-white dark:bg-zinc-800 dark:text-white gap-2"
+      className="w-full py-2 px-4 bg-black text-white dark:bg-zinc-800 dark:text-white gap-2 relative"
       role="banner"
     >
       <div className="mx-auto flex items-center justify-between relative">
@@ -38,7 +38,7 @@ const Header = () => {
               Category
             </Link>
             <Link
-              href="/authors/about"
+              href="/authors"
               className="hover:text-blue-500 dark:hover:text-white"
             >
               About

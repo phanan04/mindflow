@@ -2,6 +2,7 @@ import { createClient } from "../../../lib/prismicio";
 import CategoryArticleCard from "../../../Components/card/CategoryArticleCard";
 import Link from "next/link";
 import { Metadata } from "next";
+import { filter } from "@prismicio/client";
 
 export const revalidate = 30;
 
@@ -11,6 +12,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  
   const client = createClient();
   const category = await client.getByUID("category", slug);
 
@@ -34,23 +36,6 @@ export async function generateStaticParams() {
   }));
 }
 
-interface PostData {
-  uid: string;
-  data: {
-    title: string | null;
-    excerpt: string | null;
-    coverImage: { url?: string | null };
-    author: {
-      data?: {
-        name?: string;
-        avatar?: { url?: string };
-      };
-    };
-    date?: string | null;
-    category?: string[];
-  };
-}
-
 type Props = {
   params: Promise<{
     slug: string;
@@ -63,59 +48,23 @@ export default async function CategoryPage({ params }: Props) {
   const { slug } = await params;
   const categoryUid = slug;
 
-  let posts: PostData[] = [];
-  let category = null;
-  let pageTitle = "All Posts";
+  const categories = await client.getAllByType("category");
 
-  const queryOptions = {
-    orderings: {
-      field: "my.post.date",
-      direction: "desc" as const,
-    },
-    pageSize: 20,
-    fetchLinks: ["author.name", "author.avatar", "category.name"],
-  };
+  const allCategories = categories;
 
-  const allPosts = await client.getAllByType("post", queryOptions);
-
-  const isAllPosts = categoryUid === "all-posts";
-  if (!isAllPosts) {
-    category = await client.getByUID("category", categoryUid);
-    pageTitle = category?.data.name || categoryUid;
+  let posts;
+  
+  if(categoryUid == "all-posts") {
+    posts = await client.getAllByType("post", {
+      fetchLinks: ["category.name", "author.name", "author.avatar"],
+    });
+  } else {
+    const category = await client.getByUID("category", categoryUid);
+    posts = await client.getAllByType("post", {
+      filters: [filter.at("my.post.category", category.id)],
+      fetchLinks: ["category.name", "author.name", "author.avatar"],
+    });
   }
-
-  const prismicPosts = isAllPosts
-    ? allPosts
-    : allPosts.filter((post) => {
-        const postCategories = post.data.category || [];
-        return postCategories.some((cat: any) => {
-          return cat?.category?.uid === categoryUid;
-        });
-      });
-
-  posts = prismicPosts.map((post) => ({
-    uid: post.uid,
-    data: {
-      title: post.data.title || null,
-      excerpt: post.data.excerpt || null,
-      coverImage: post.data.coverImage,
-      author: {
-        data: {
-          name: (post.data.author as any)?.data?.name || undefined,
-          avatar: (post.data.author as any)?.data?.avatar?.url
-            ? { url: (post.data.author as any).data.avatar.url }
-            : undefined,
-        },
-      },
-      date: post.data.date || undefined,
-      category:
-        post.data.category
-          ?.map((cat: any) => cat?.category?.uid)
-          .filter(Boolean) || [],
-    },
-  }));
-
-  const allCategories = await client.getAllByType("category");
 
   return (
     <div className="w-full max-w-[1000px] mx-auto px-4 py-8">
@@ -131,25 +80,25 @@ export default async function CategoryPage({ params }: Props) {
                 : "bg-gray-200 text-gray-700 hover:bg-blue-100 hover:text-blue-500"
             }`}
           >
-            {cat.uid === "all-posts" ? "All Posts" : cat.data.name}
+            {cat.data.name}
           </Link>
         ))}
       </div>
 
       {/* POSTS GRID */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {posts.map((post) => (
-          <CategoryArticleCard
-            slug={post.uid}
+        {posts.map((post: any) => (
+          <CategoryArticleCard 
             key={post.uid}
-            title={post.data.title || ""}
-            excerpt={post.data.excerpt || ""}
-            coverImage={post.data.coverImage.url ?? "/fallback.jpg"}
+            slug={post.uid} 
+            title={post.data.title} 
+            excerpt={post.data.excerpt} 
+            coverImage={post.data.coverImage?.url || ""} 
             author={{
-              name: post.data.author?.data?.name ?? "Unknown Author",
-              avatar: post.data.author?.data?.avatar?.url,
-            }}
-            date={post.data.date || new Date().toISOString()}
+              name: post.data.author?.data?.name || "Unknown",
+              avatar: post.data.author?.data?.avatar?.url
+            }} 
+            date={post.data.date || ""} 
           />
         ))}
       </div>
