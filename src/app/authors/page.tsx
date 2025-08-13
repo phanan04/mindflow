@@ -7,11 +7,11 @@ export const revalidate = 30;
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Authors - Our Team",
-    description: "Meet our talented team of authors and contributors",
+    title: "About",
+    description: "Authors - Our Team",
     openGraph: {
-      title: "Authors - Our Team",
-      description: "Meet our talented team of authors and contributors",
+      title: "About",
+      description: "Authors - Our Team",
       type: "website",
     },
   };
@@ -33,16 +33,15 @@ export default async function AuthorsPage() {
   return (
     <div className="max-w-screen-xl mx-auto px-4 py-8 flex-1">
       <div className="w-full max-w-[1000px] mx-auto">
-        <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">
+        <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-200 py-2 border-b border-gray-300 dark:border-gray-600">
           OUR TEAM
         </h3>
-        <hr className="my-2 border-gray-300 dark:border-gray-600" />
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
           {authors.map((author) => (
             <div key={author.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
               <Link href={`/authors/${author.uid}`} className="block">
-                <div className="flex flex-col items-center text-center">
+                <div className="flex flex-col items-center">
                   <Image
                     src={author.data.avatar.url || "/assets/images/default-avatar.png"}
                     alt={author.data.avatar.alt || "Author"}

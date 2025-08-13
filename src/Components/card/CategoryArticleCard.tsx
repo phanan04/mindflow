@@ -39,9 +39,11 @@ export default function CategoryArticleCard({
 
           <div className="absolute bottom-0 left-0 p-4 text-white">
             <h3 className="mt-2 text-2xl font-bold">{title}</h3>
-            <p className="hidden md:block text-sm text-gray-200 line-clamp-2">
-              {excerpt}
-            </p>
+            {excerpt && (
+              <p className="text-sm text-gray-200 md:line-clamp-2">
+                {excerpt}
+              </p>
+            )}
             <div className="mt-2 flex justify-between text-xs text-gray-400">
               <span>By {author.name}</span>
               <span>{formatDate(date)}</span>

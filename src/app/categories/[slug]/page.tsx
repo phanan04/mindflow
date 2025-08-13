@@ -69,7 +69,7 @@ export default async function CategoryPage({ params }: Props) {
   return (
     <div className="w-full max-w-[1000px] mx-auto px-4 py-8">
       {/* CATEGORY MENU */}
-      <div className="flex flex-row gap-4 justify-center pb-4 flex-wrap">
+      <div className="flex flex-row gap-2 justify-center pb-4 flex-wrap">
         {allCategories.map((cat) => (
           <Link
             key={cat.uid}
