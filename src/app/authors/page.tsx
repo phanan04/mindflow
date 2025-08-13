@@ -43,7 +43,7 @@ export default async function AuthorsPage() {
               <Link href={`/authors/${author.uid}`} className="block">
                 <div className="flex flex-col items-center">
                   <Image
-                    src={author.data.avatar.url || "/assets/images/default-avatar.png"}
+                    src={author.data.avatar.url || ""}
                     alt={author.data.avatar.alt || "Author"}
                     width={80}
                     height={80}

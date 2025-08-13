@@ -10,6 +10,7 @@
     "slicemachine": "start-slicemachine"
   },
   "dependencies": {
+    "@giscus/react": "^3.1.0",
     "@prismicio/client": "^7.19.0",
     "@prismicio/helpers": "^2.3.9",
     "@prismicio/next": "^2.0.1",

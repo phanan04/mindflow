@@ -8,6 +8,7 @@ import { isFilled } from "@prismicio/helpers";
 import ShareButtons from "@/Components/ShareButtons";
 import { Metadata } from "next";
 import { asText } from "@prismicio/client";
+import GiscusComments from "@/Components/GiscusComments";
 
 export async function generateMetadata({
   params,
@@ -19,11 +20,11 @@ export async function generateMetadata({
   const post = await client.getByUID("post", slug);
 
   return {
-    title:  post.data.title || '',
-    description: post.data.excerpt || '',
+    title: post.data.title || "",
+    description: post.data.excerpt || "",
     openGraph: {
-      title: post.data.title || '',
-      description: post.data.excerpt || '',
+      title: post.data.title || "",
+      description: post.data.excerpt || "",
       images: post.data.coverImage?.url ? [post.data.coverImage.url] : [],
       type: "article",
     },
@@ -48,13 +49,12 @@ export default async function BlogPage({
 }) {
   const { slug } = await params;
   const client = createClient();
-  const post = await client.getByUID("post", slug, {
-  });
+  const post = await client.getByUID("post", slug, {});
 
   if (!post) return notFound();
 
   return (
-    <article className="w-full max-w-[1000px] mx-auto px-4 py-8 border">
+    <article className="w-full max-w-[1000px] mx-auto px-4 py-8 border flex-1">
       <div className="flex items-center space-x-3 mb-4">
         {isFilled.contentRelationship(post?.data?.author) ? (
           <Image
@@ -68,8 +68,10 @@ export default async function BlogPage({
             className="rounded-full"
           />
         ) : null}
-        {post.data.author && "data" in post.data.author && post.data.author.data ? (
-          <Link 
+        {post.data.author &&
+        "data" in post.data.author &&
+        post.data.author.data ? (
+          <Link
             href={`/authors/${post.data.author.uid}`}
             className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
           >
@@ -84,7 +86,9 @@ export default async function BlogPage({
       </div>
 
       <h1 className="text-3xl font-bold mb-4">
-        {typeof post.data.title === 'string' ? post.data.title : asText(post.data.title) || ''}
+        {typeof post.data.title === "string"
+          ? post.data.title
+          : asText(post.data.title) || ""}
       </h1>
 
       {post.data.coverImage?.url ? (
@@ -92,7 +96,11 @@ export default async function BlogPage({
           src={post.data.coverImage.url}
           width={1000}
           height={500}
-          alt={typeof post.data.title === 'string' ? post.data.title : asText(post.data.title) || ''}
+          alt={
+            typeof post.data.title === "string"
+              ? post.data.title
+              : asText(post.data.title) || ""
+          }
           className="object-cover mb-6"
         />
       ) : null}
@@ -101,6 +109,10 @@ export default async function BlogPage({
         <PrismicRichText field={post.data.content} />
       </div>
       <ShareButtons />
+
+      <div className="mt-12">
+        <GiscusComments />
+      </div>
     </article>
   );
 }
