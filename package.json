@@ -10,7 +10,6 @@
     "slicemachine": "start-slicemachine"
   },
   "dependencies": {
-    "@next/swc-win32-x64-msvc": "^15.4.6",
     "@prismicio/client": "^7.19.0",
     "@prismicio/helpers": "^2.3.9",
     "@prismicio/next": "^2.0.1",
