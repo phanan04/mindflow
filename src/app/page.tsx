@@ -56,7 +56,7 @@ export default async function HomePage() {
         ))}
       </div>
       <Link
-        href="/categories/allposts"
+        href="/categories/all-posts"
         className="px-4 py-2 bg-black w-fit text-white mx-auto flex justify-center dark:bg-white dark:text-black"
       >
         ALL POSTS
