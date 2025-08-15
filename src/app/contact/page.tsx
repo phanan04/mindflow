@@ -1,91 +1,89 @@
-import { Metadata } from "next";
-import { createClient } from "../../lib/prismicio";
-import { FaEnvelope, FaFacebook, FaPinterest } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-
-export const revalidate = 30;
-
-export async function generateMetadata(): Promise<Metadata> {
-  const client = createClient();
-  const [contact] = await client.getAllByType("author");
-
-  return {
-    title: contact.data.name,
-    description: contact.data.bio,
-    openGraph: {
-      title: contact.data.name || "",
-      description: contact.data.bio || "",
-      type: "website",
-    },
-  };
-}
+import { createClient } from "@/lib/prismicio";
+import { FaEnvelope, FaPinterest } from "react-icons/fa";
+import { FaFacebook, FaXTwitter } from "react-icons/fa6";
 
 export default async function ContactPage() {
   const client = createClient();
-
   const [author] = await client.getAllByType("author");
 
   return (
-    <div className="max-w-screen-xl mx-auto h-auto p-5">
-      <h1 className="text-2xl font-bold text-center pb-4">CONTACT</h1>
-      <div className="flex flex-col sm:flex-row gap-4 max-w-[1000px] mx-auto mt-4">
-        <hr />
-        <div className="flex flex-col gap-2 w-1/2">
-          <p>{author.data.email}</p>
-          <p>{author.data.phone}</p>
-          <div className="flex flex-row gap-2">
-            <FaFacebook className="hover:text-blue-600 cursor-pointer text-xl" />
-            <FaXTwitter className="hover:text-black cursor-pointer text-xl" />
-            <FaPinterest className="hover:text-red-600 cursor-pointer text-xl" />
-            <FaEnvelope className="hover:text-green-600 cursor-pointer text-xl" />
+    <div className="max-w-screen-xl mx-auto p-5">
+      <h1 className="text-3xl font-bold text-center pb-6">Contact</h1>
+
+      <div className="flex flex-col md:flex-row gap-8 max-w-[1000px] mx-auto">
+        
+        {/* Cột thông tin */}
+        <div className="flex-1 bg-gray-50 dark:bg-zinc-800 p-6 rounded-lg shadow-sm">
+          <h2 className="text-xl font-semibold mb-4">Get in Touch</h2>
+          <p className="flex items-center gap-2">
+            {author.data.email}
+          </p>
+          <p className="flex items-center gap-2 mt-2">
+            {author.data.phone}
+          </p>
+          <div className="flex gap-4 mt-4 text-2xl">
+            <a href="#" aria-label="Facebook" className="hover:text-blue-600">
+              <FaFacebook />
+            </a>
+            <a href="#" aria-label="Twitter" className="hover:text-black">
+              <FaXTwitter />
+            </a>
+            <a href="#" aria-label="Pinterest" className="hover:text-red-600">
+              <FaPinterest />
+            </a>
           </div>
         </div>
 
+        {/* Form liên hệ */}
         <form
           action="https://formspree.io/f/xblkpjbl"
           method="POST"
-          className="flex flex-col gap-2 w-full sm:w-1/2"
+          className="flex-1 flex flex-col gap-4 p-6 bg-gray-50 dark:bg-zinc-800 rounded-lg shadow-sm "
         >
-          <label>
-            First Name
-            <input
-              type="text"
-              name="First-Name"
-              required
-              className="py-2 px-4 w-full border"
-            />
-          </label>
+          <div className="flex gap-4">
+            <div className="flex-1">
+              <label className="block text-sm font-medium mb-1">First Name</label>
+              <input
+                type="text"
+                name="First-Name"
+                required
+                className="w-full border py-2 px-3 dark:bg-zinc-700"
+              />
+            </div>
+            <div className="flex-1">
+              <label className="block text-sm font-medium mb-1">Last Name</label>
+              <input
+                type="text"
+                name="Last-Name"
+                required
+                className="w-full border py-2 px-3 dark:bg-zinc-700"
+              />
+            </div>
+          </div>
 
-          <label>
-            Last Name
-            <input
-              type="text"
-              name="Last-Name"
-              required
-              className="py-2 px-4 w-full border"
-            />
-          </label>
-
-          <label>
-            Email
+          <div>
+            <label className="block text-sm font-medium mb-1">Email</label>
             <input
               type="email"
               name="Email"
               required
-              className="py-2 px-4 w-full border"
+              className="w-full border py-2 px-3 dark:bg-zinc-700"
             />
-          </label>
+          </div>
 
-          <label>
-            Message
+          <div>
+            <label className="block text-sm font-medium mb-1">Message</label>
             <textarea
               name="Message"
               required
-              className="py-2 px-4 w-full border h-32"
+              className="w-full border py-2 px-3 h-32 dark:bg-zinc-700"
             />
-          </label>
+          </div>
 
-          <button type="submit" className="bg-black text-white py-2 w-full">
+          <button
+            type="submit"
+            className="bg-blue-600 text-white py-2 hover:bg-blue-700 transition-colors"
+          >
             Send Message
           </button>
         </form>
