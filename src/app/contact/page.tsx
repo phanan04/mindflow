@@ -80,7 +80,7 @@ export default async function ContactPage() {
 
           <button
             type="submit"
-            className="bg-blue-600 text-white py-2 hover:bg-blue-700 transition-colors"
+            className="bg-indigo-600 text-white py-2 hover:bg-indigo-700 transition-colors"
           >
             Send Message
           </button>

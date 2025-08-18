@@ -63,6 +63,6 @@ export default async function HomePage() {
           ALL POSTS
         </Link>
       </div>
-    </>
+    </> 
   );
 }

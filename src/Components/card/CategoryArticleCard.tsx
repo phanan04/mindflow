@@ -25,7 +25,7 @@ export default function CategoryArticleCard({
   date,
 }: CategoryArticleCardProps) {
   return (
-    <div className="rounded-lg border border-transparent shadow-md hover:shadow-2xl transition-all duration-300">
+    <div className="rounded-lg border border-transparent shadow-md hover:shadow-2xl">
       <Link href={`/blog/${slug}`}>
         <div className="relative aspect-video md:rounded-lg overflow-hidden group">
           <Image
