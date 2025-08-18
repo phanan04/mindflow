@@ -82,7 +82,7 @@ export default function CategoryArticleCard({
               <span className="font-medium">Game Review</span>
             </div>
             <div className="text-purple-600 dark:text-purple-400 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors duration-300">
-              <span className="text-sm font-semibold">Read More →</span>
+              <span className="text-sm font-semibold">Xem Thêm →</span>
             </div>
           </div>
         </div>

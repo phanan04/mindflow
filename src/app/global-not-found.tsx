@@ -5,16 +5,16 @@ import type { Metadata } from 'next'
 const inter = Inter({ subsets: ['latin'] })
  
 export const metadata: Metadata = {
-  title: '404 - Page Not Found',
-  description: 'The page you are looking for does not exist.',
+  title: '404 - Không Tìm Thấy Trang',
+  description: 'Trang bạn đang tìm kiếm không tồn tại.',
 }
  
 export default function GlobalNotFound() {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="vi" className={inter.className}>
       <body>
-        <h1>404 - Page Not Found</h1>
-        <p>This page does not exist.</p>
+        <h1>404 - Không Tìm Thấy Trang</h1>
+        <p>Trang này không tồn tại.</p>
       </body>
     </html>
   )

@@ -52,71 +52,141 @@ export default async function AuthorPage({
   });
 
   return (
-    <div className="max-w-screen-xl mx-auto px-4 py-8 flex-1">
-      <div className="w-full max-w-[1000px] mx-auto flex flex-col gap-6">
-        {/* INFO */}
-        <div className="flex flex-col sm:flex-row gap-3">
-          <div className="flex flex-row md:flex-row gap-4 items-center md:items-start w-1/2">
-            <Image
-              src={author.data.avatar.url || "/assets/images/default-avatar.png"}
-              alt={author.data.avatar.alt || "Author"}
-              width={100}
-              height={100}
-              className="rounded-full object-cover border shadow-sm"
-            />
-            <div>
-              <p className="font-bold">{author.data.name || ""}</p>
-              <p className="italic text-gray-500">Author</p>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50 dark:from-zinc-900 dark:via-zinc-800 dark:to-purple-900/20">
+      <div className="max-w-screen-xl mx-auto px-4 py-8 flex-1">
+        <div className="w-full max-w-[1200px] mx-auto flex flex-col gap-8">
+          {/* HERO SECTION */}
+          <div className="relative bg-white dark:bg-zinc-800 rounded-2xl shadow-xl border border-gray-100 dark:border-zinc-700 overflow-hidden">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600/5 to-pink-600/5 dark:from-purple-400/5 dark:to-pink-400/5"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-purple-200/20 to-transparent dark:from-purple-600/10 rounded-full transform translate-x-32 -translate-y-32"></div>
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-pink-200/20 to-transparent dark:from-pink-600/10 rounded-full transform -translate-x-24 translate-y-24"></div>
+            
+            <div className="relative p-8 md:p-12">
+              <div className="flex flex-col lg:flex-row gap-8 items-start">
+                {/* Avatar & Basic Info */}
+                <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+                  <div className="relative">
+                    <Image
+                      src={author.data.avatar.url || "/assets/images/default-avatar.png"}
+                      alt={author.data.avatar.alt || "Author"}
+                      width={140}
+                      height={140}
+                      className="rounded-2xl object-cover border-4 border-white dark:border-zinc-600 shadow-xl"
+                    />
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-purple-600/20 to-pink-600/20 dark:from-purple-400/20 dark:to-pink-400/20"></div>
+                  </div>
+                  <div className="text-center sm:text-left">
+                    <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+                      {author.data.name || ""}
+                    </h1>
+                    <div className="flex items-center gap-2 justify-center sm:justify-start mb-4">
+                      <span className="px-3 py-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-sm font-semibold rounded-full">
+                        ✍️ Author
+                      </span>
+                      <span className="px-3 py-1 bg-gray-100 dark:bg-zinc-700 text-gray-700 dark:text-gray-300 text-sm font-medium rounded-full">
+                        {posts.length} bài viết
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Bio */}
+                <div className="flex-1 lg:ml-8">
+                  <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">
+                    Giới thiệu
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
+                    {author.data.bio || "Chưa có thông tin giới thiệu."}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-          <p className="text-gray-700 dark:text-gray-300 w-full">
-            {author.data.bio || ""}
-          </p>
-        </div>
 
-        {/* Danh sách bài viết */}
-        <div className="mt-8">
-          <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200">
-            Bài viết của {author.data.name} ({posts.length})
-          </h2>
-          
-          {posts.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {posts.map((post) => (
-                <div key={post.id} className="rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                  <Link href={`/blog/${post.uid}`} >
-                    <div className="flex gap-4">
-                      {post.data.coverImage?.url && (
-                        <div className="flex w-1/4">
-                          <Image
-                            src={post.data.coverImage.url}
-                            alt={post.data.coverImage.alt || ""}
-                            width={120}
-                            height={80}
-                            className="rounded-lg object-cover"
-                          />
+          {/* ARTICLES SECTION */}
+          <div>
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
+                Bài viết của {author.data.name}
+              </h2>
+              <div className="flex items-center gap-2 text-purple-600 dark:text-purple-400">
+                <span className="text-lg font-semibold">{posts.length}</span>
+                <span className="text-sm text-gray-500 dark:text-gray-400">bài viết</span>
+              </div>
+            </div>
+            
+            {posts.length > 0 ? (
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {posts.map((post) => (
+                  <article key={post.id} className="group bg-white dark:bg-zinc-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] overflow-hidden border border-gray-100 dark:border-zinc-700">
+                    <Link href={`/blog/${post.uid}`} className="block">
+                      <div className="flex flex-col">
+                        {/* Image */}
+                        {post.data.coverImage?.url && (
+                          <div className="relative overflow-hidden h-48">
+                            <Image
+                              src={post.data.coverImage.url}
+                              alt={post.data.coverImage.alt || ""}
+                              width={400}
+                              height={200}
+                              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                            <div className="absolute top-4 left-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-3 py-1.5 rounded-full text-xs font-bold">
+                              📝 ARTICLE
+                            </div>
+                          </div>
+                        )}
+                        
+                        {/* Content */}
+                        <div className="p-6">
+                          <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-3">
+                            <span className="font-medium">📅 {post.data.date && formatDate(post.data.date)}</span>
+                          </div>
+                          
+                          <h3 className="text-xl font-bold text-gray-900 dark:text-white leading-tight mb-3 line-clamp-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
+                            {post.data.title || "Untitled"}
+                          </h3>
+                          
+                          {post.data.excerpt && (
+                            <p className="text-gray-600 dark:text-gray-300 line-clamp-2 leading-relaxed mb-4">
+                              {post.data.excerpt}
+                            </p>
+                          )}
+                          
+                          <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-zinc-700">
+                            <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                              <span>👤 {author.data.name}</span>
+                            </div>
+                            <div className="flex items-center gap-2 text-purple-600 dark:text-purple-400 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors duration-300">
+                              <span className="text-sm font-semibold">Đọc tiếp</span>
+                              <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
+                            </div>
+                          </div>
                         </div>
-                      )}
-                      <div className="w-3/4 flex flex-col">
-                        <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2 hover:text-blue-600 dark:hover:text-blue-400">
-                          {post.data.title || "Untitled"}
-                        </h3>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                          {post.data.date && formatDate(post.data.date)}
-                        </p>
                       </div>
-                    </div>
-                  </Link>
+                      
+                      {/* Hover Effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-purple-600/5 to-pink-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    </Link>
+                  </article>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-16 bg-white dark:bg-zinc-800 rounded-2xl shadow-lg border border-gray-100 dark:border-zinc-700">
+                <div className="max-w-md mx-auto">
+                  <div className="text-6xl mb-4">📝</div>
+                  <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">
+                    Chưa có bài viết
+                  </h3>
+                  <p className="text-gray-500 dark:text-gray-400">
+                    {author.data.name} chưa có bài viết nào được đăng tải.
+                  </p>
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-8">
-              <p className="text-gray-500 dark:text-gray-400">
-                {author.data.name} chưa có bài viết nào.
-              </p>
-            </div>
-          )}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

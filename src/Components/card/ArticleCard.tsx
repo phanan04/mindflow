@@ -85,7 +85,7 @@ export default function ArticleCard({
                   <span className="font-medium">Game Article</span>
                 </div>
                 <div className="flex items-center gap-2 text-purple-600 dark:text-purple-400 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors duration-300">
-                  <span className="text-sm font-semibold">Read More</span>
+                  <span className="text-sm font-semibold">Xem Thêm</span>
                   <FaArrowRight size={12} className="transform group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
               </div>

@@ -9,8 +9,8 @@ const Header = lazy(() => import("@/Components/Header"));
 const Footer = lazy(() => import("@/Components/Footer"));
 
 export const metadata: Metadata = {
-  title: "My blog",
-  description: "nextgame blog",
+  title: "GameFlow - Blog Game Việt Nam",
+  description: "Blog game Việt Nam với tin tức, đánh giá và nội dung chất lượng",
   // Thêm viewport cho mobile optimization
   viewport: "width=device-width, initial-scale=1",
 }

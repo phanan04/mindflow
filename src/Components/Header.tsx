@@ -23,7 +23,7 @@ const Header = memo(() => {
           <button
             onClick={() => setIsMenuOpen(true)}
             className="lg:hidden p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"
-            aria-label="Mở menu"
+            aria-label="Mở menu điều hướng"
           >
             <Menu size={24} />
           </button>
@@ -35,28 +35,28 @@ const Header = memo(() => {
               className="flex items-center gap-2 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-300"
             >
               <Home size={18} className="text-purple-500 dark:text-purple-400 hover:text-purple-600 dark:hover:text-purple-300 transition-colors" />
-              <span className="hover:text-purple-600 dark:hover:text-purple-300 transition-colors">Home</span>
+              <span className="hover:text-purple-600 dark:hover:text-purple-300 transition-colors">Trang Chủ</span>
             </Link>
             <Link
               href="/categories/all-posts"
               className="group flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
             >
               <BookOpen size={18} className="text-blue-500 dark:text-blue-400 group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors" />
-              <span className="group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors">Articles</span>
+              <span className="group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors">Bài Viết</span>
             </Link>
             <Link
               href="/authors"
               className="group flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
             >
               <Users size={18} className="text-green-500 dark:text-green-400 group-hover:text-green-600 dark:group-hover:text-green-300 transition-colors" />
-              <span className="group-hover:text-green-600 dark:group-hover:text-green-300 transition-colors">About</span>
+              <span className="group-hover:text-green-600 dark:group-hover:text-green-300 transition-colors">Giới Thiệu</span>
             </Link>
             <Link
               href="/contact"
               className="group flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
             >
               <Mail size={18} className="text-orange-500 dark:text-orange-400 group-hover:text-orange-600 dark:group-hover:text-orange-300 transition-colors" />
-              <span className="group-hover:text-orange-600 dark:group-hover:text-orange-300 transition-colors">Contact</span>
+              <span className="group-hover:text-orange-600 dark:group-hover:text-orange-300 transition-colors">Liên Hệ</span>
             </Link>
           </nav>
         </div>

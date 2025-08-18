@@ -51,7 +51,7 @@ export default function MenuModal({
           <button 
             onClick={onClose} 
             className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors duration-200"
-            aria-label="Đóng menu"
+            aria-label="Đóng menu điều hướng"
           >
             <X size={20} className="text-gray-600 dark:text-gray-400"/>
           </button> 
@@ -65,7 +65,7 @@ export default function MenuModal({
             className="flex items-center gap-4 p-4 rounded-xl hover:bg-purple-50 dark:hover:bg-purple-900/20 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-200 group"
           >
             <Home size={20} className="text-purple-500 group-hover:text-purple-600" />
-            <span className="font-medium">Home</span>
+            <span className="font-medium">Trang Chủ</span>
           </Link>
           
           <Link 
@@ -74,7 +74,7 @@ export default function MenuModal({
             className="flex items-center gap-4 p-4 rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/20 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 group"
           >
             <BookOpen size={20} className="text-blue-500 group-hover:text-blue-600" />
-            <span className="font-medium">Articles</span>
+            <span className="font-medium">Bài Viết</span>
           </Link>
           
           <Link 
@@ -83,7 +83,7 @@ export default function MenuModal({
             className="flex items-center gap-4 p-4 rounded-xl hover:bg-green-50 dark:hover:bg-green-900/20 text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-all duration-200 group"
           >
             <Users size={20} className="text-green-500 group-hover:text-green-600" />
-            <span className="font-medium">About</span>
+            <span className="font-medium">Giới Thiệu</span>
           </Link>
           
           <Link 
@@ -92,7 +92,7 @@ export default function MenuModal({
             className="flex items-center gap-4 p-4 rounded-xl hover:bg-orange-50 dark:hover:bg-orange-900/20 text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition-all duration-200 group"
           >
             <Mail size={20} className="text-orange-500 group-hover:text-orange-600" />
-            <span className="font-medium">Contact</span>
+            <span className="font-medium">Liên Hệ</span>
           </Link>
         </nav>
 

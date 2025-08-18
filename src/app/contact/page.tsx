@@ -13,11 +13,11 @@ export default async function ContactPage() {
         <div className="relative max-w-screen-xl mx-auto px-4 py-20 text-center">
           <div className="inline-flex items-center gap-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full px-6 py-2 mb-8">
             <span className="text-2xl">📧</span>
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-300">Get In Touch</span>
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-300">Liên Hệ Với Chúng Tôi</span>
           </div>
           <h1 className="text-5xl md:text-6xl font-extrabold mb-6">
             <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Contact Us
+              Liên Hệ Với Chúng Tôi
             </span>
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
@@ -35,7 +35,7 @@ export default async function ContactPage() {
                 <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center">
                   <FaEnvelope className="text-white text-lg" />
                 </div>
-                Contact Information
+                Thông Tin Liên Hệ
               </h2>
               
               <div className="space-y-6">
@@ -54,7 +54,7 @@ export default async function ContactPage() {
                     <FaPhone className="text-white" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Phone</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Điện Thoại</p>
                     <p className="font-semibold text-gray-800 dark:text-gray-200">{author.data.phone}</p>
                   </div>
                 </div>
@@ -64,14 +64,14 @@ export default async function ContactPage() {
                     <FaMapMarkerAlt className="text-white" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Location</p>
-                    <p className="font-semibold text-gray-800 dark:text-gray-200">Vietnam</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Vị Trí</p>
+                    <p className="font-semibold text-gray-800 dark:text-gray-200">Việt Nam</p>
                   </div>
                 </div>
               </div>
 
               <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-600">
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Follow Us</h3>
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Theo Dõi Chúng Tôi</h3>
                 <div className="flex gap-4">
                   <a 
                     href="#" 
@@ -100,12 +100,12 @@ export default async function ContactPage() {
 
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl p-6 text-white">
-                <h3 className="font-bold text-lg mb-2">Response Time</h3>
-                <p className="text-purple-100">Usually within 24 hours</p>
+                <h3 className="font-bold text-lg mb-2">Phản hồi</h3>
+                <p className="text-purple-100">Thường trong vòng 24 giờ</p>
               </div>
               <div className="bg-gradient-to-r from-green-500 to-teal-500 rounded-xl p-6 text-white">
-                <h3 className="font-bold text-lg mb-2">Available</h3>
-                <p className="text-green-100">Monday - Friday</p>
+                <h3 className="font-bold text-lg mb-2">Giờ Làm Việc</h3>
+                <p className="text-green-100">Thứ Hai - Thứ Sáu</p>
               </div>
             </div>
           </div>
@@ -115,7 +115,7 @@ export default async function ContactPage() {
               <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
                 <FaEnvelope className="text-white text-lg" />
               </div>
-              Send Message
+              Liên Hệ Với Chúng Tôi
             </h2>
 
             <form
@@ -126,7 +126,7 @@ export default async function ContactPage() {
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                    First Name *
+                    Họ *
                   </label>
                   <input
                     type="text"
@@ -138,7 +138,7 @@ export default async function ContactPage() {
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                    Last Name *
+                    Tên *
                   </label>
                   <input
                     type="text"
@@ -152,7 +152,7 @@ export default async function ContactPage() {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                  Email Address *
+                  Địa chỉ Email  *
                 </label>
                 <input
                   type="email"
@@ -165,7 +165,7 @@ export default async function ContactPage() {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                  Subject
+                  Chủ đề
                 </label>
                 <input
                   type="text"
@@ -177,7 +177,7 @@ export default async function ContactPage() {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                  Message *
+                  Tin nhắn *
                 </label>
                 <textarea
                   name="Message"
@@ -192,7 +192,7 @@ export default async function ContactPage() {
                 type="submit"
                 className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white py-4 px-6 rounded-lg font-semibold transition-all duration-200 transform hover:scale-[1.02] focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 shadow-lg hover:shadow-xl"
               >
-                Send Message
+                Gửi Tin Nhắn
               </button>
             </form>
           </div>
@@ -203,7 +203,7 @@ export default async function ContactPage() {
             <div className="absolute inset-0 bg-black/10"></div>
             <div className="relative">
               <h3 className="text-3xl font-bold mb-4">
-                Ready to Start a Conversation?
+                Bắt Đầu Cuộc Trò Chuyện?
               </h3>
               <p className="text-purple-100 mb-8 max-w-2xl mx-auto">
                 Chúng tôi luôn sẵn sàng lắng nghe ý kiến, câu hỏi và đề xuất từ cộng đồng. 
@@ -215,14 +215,14 @@ export default async function ContactPage() {
                   className="inline-flex items-center gap-3 px-6 py-3 bg-white text-purple-600 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 >
                   <FaEnvelope />
-                  Email Us
+                  Gửi Email
                 </a>
                 <a
                   href={`tel:${author.data.phone}`}
                   className="inline-flex items-center gap-3 px-6 py-3 bg-white/20 backdrop-blur-sm text-white rounded-full font-semibold border border-white/30 hover:bg-white/30 transition-all duration-300 transform hover:scale-105"
                 >
                   <FaPhone />
-                  Call Us
+                  Gọi Cho Chúng Tôi
                 </a>
               </div>
             </div>

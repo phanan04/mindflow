@@ -53,7 +53,7 @@ export default async function CategoryPage({ params }: Props) {
 
   let posts;
   let currentCategoryName = "All Posts";
-  let currentCategoryDescription = "Explore all our gaming content";
+  let currentCategoryDescription = "Khám phá tất cả bài viết, đánh giá và tin tức về trò chơi";
 
   if (categoryUid == "all-posts") {
     posts = await client.getAllByType("post", {
@@ -61,7 +61,7 @@ export default async function CategoryPage({ params }: Props) {
     });
     currentCategoryName = "All Posts";
     currentCategoryDescription =
-      "Discover all gaming articles, reviews, and news";
+      "Khám phá tất cả bài viết, đánh giá và tin tức về trò chơi";
   } else {
     const category = await client.getByUID("category", categoryUid);
     posts = await client.getAllByType("post", {
@@ -71,7 +71,7 @@ export default async function CategoryPage({ params }: Props) {
     currentCategoryName = category.data.name || categoryUid;
     currentCategoryDescription =
       category.data.summary ||
-      `Explore ${category.data.name} games and content`;
+      `Khám phá ${category.data.name} trò chơi và nội dung`;
   }
 
   const categoryEmojis: { [key: string]: string } = {
@@ -136,7 +136,7 @@ export default async function CategoryPage({ params }: Props) {
 
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-            Latest Articles
+            Bài Viết Mới Nhất
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full"></div>
         </div>
@@ -165,8 +165,7 @@ export default async function CategoryPage({ params }: Props) {
         <div className="text-center">
           <div className="inline-flex items-center justify-center px-8 py-4 mb-4 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-zinc-800 dark:to-zinc-700 rounded-xl">
             <span className="text-gray-600 dark:text-gray-300 font-semibold">
-              🎯 You have reached the end of {currentCategoryName.toLowerCase()}{" "}
-              articles
+              🎯 Bạn đã đến cuối bài viết
             </span>
           </div>
         </div>

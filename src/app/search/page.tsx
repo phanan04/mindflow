@@ -3,8 +3,8 @@ import { getPostByKeyword } from "@/lib/getPostByKeyword";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Search",
-  description: "Search for blog posts",
+  title: "Tìm Kiếm",
+  description: "Tìm kiếm bài viết blog",
 };
 
 export default async function SearchPage({
@@ -21,7 +21,7 @@ export default async function SearchPage({
       <h1 className="text-center my-2 font-bold text-xl">Kết quả tìm kiếm: {query} </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {posts.length === 0 ? (
-          <p>No results found for &quot;{query}&quot;</p>
+          <p>Không tìm thấy kết quả cho &quot;{query}&quot;</p>
         ) : (
           posts.map((post) => (
             <CategoryArticleCard

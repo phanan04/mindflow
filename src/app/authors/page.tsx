@@ -7,11 +7,11 @@ export const revalidate = 30;
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "About",
-    description: "Authors - Our Team",
+    title: "Giới Thiệu",
+    description: "Tác Giả - Đội Ngũ Của Chúng Tôi",
     openGraph: {
-      title: "About",
-      description: "Authors - Our Team",
+      title: "Giới Thiệu",
+      description: "Tác Giả - Đội Ngũ Của Chúng Tôi",
       type: "website",
     },
   };
@@ -42,7 +42,7 @@ export default async function AuthorsPage() {
           </div>
           <h1 className="text-5xl md:text-6xl font-extrabold mb-6">
             <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
-              About Us
+              Giới Thiệu Về Chúng Tôi
             </span>
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
