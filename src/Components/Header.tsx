@@ -1,13 +1,14 @@
 "use client";
 
-import SearchButton from "@/app/search/SearchButton";
 import Link from "next/link";
 import { ThemeToggle } from "./theme/ThemeToggle";
-import MenuModal from "./MenuModal";
-import { useState } from "react";
+import { useState, memo, lazy, Suspense } from "react";
 import { BookOpen, Home, Mail, Menu, Users } from "lucide-react";
 
-const Header = () => {
+const SearchButton = lazy(() => import("@/app/search/SearchButton"));
+const MenuModal = lazy(() => import("./MenuModal"));
+
+const Header = memo(() => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -21,14 +22,14 @@ const Header = () => {
           {/* Mobile hamburger button */}
           <button
             onClick={() => setIsMenuOpen(true)}
-            className="md:hidden p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"
+            className="lg:hidden p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"
             aria-label="Mở menu"
           >
             <Menu size={24} />
           </button>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-6">
             <Link 
               href="/" 
               className="flex items-center gap-2 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-300"
@@ -68,20 +69,27 @@ const Header = () => {
           </Link>
         </div>
 
-        <div className="hidden md:flex justify-end items-center gap-3 text-lg text-gray-600 dark:text-neutral-300 w-1/3">
+        <div className="hidden lg:flex justify-end items-center gap-3 text-lg text-gray-600 dark:text-neutral-300 w-1/3">
           <div className="flex items-center gap-3">
             <ThemeToggle />
             <div className="transform hover:scale-110 transition-transform duration-300">
-              <SearchButton />
+              <Suspense fallback={<div className="w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />}>
+                <SearchButton />
+              </Suspense>
             </div>
           </div>
         </div>
       </div>
 
-      {/* MenuModal */}
-      <MenuModal isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+      {isMenuOpen && (
+        <Suspense fallback={null}>
+          <MenuModal isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+        </Suspense>
+      )}
     </header>
   );
-};
+});
+
+Header.displayName = 'Header';
 
 export default Header;

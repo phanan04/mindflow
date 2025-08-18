@@ -4,6 +4,7 @@ import SearchButton from "@/app/search/SearchButton";
 import { X, Home, BookOpen, Users, Mail } from "lucide-react";
 import Link from "next/link";
 import { ThemeToggle } from "./theme/ThemeToggle";
+import { useEffect } from "react";
 
 export default function MenuModal({
   isOpen,
@@ -12,6 +13,18 @@ export default function MenuModal({
   isOpen: boolean;
   onClose: () => void;
 }) {
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
