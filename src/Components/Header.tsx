@@ -62,7 +62,7 @@ const Header = () => {
         
         <div className="absolute left-1/2 transform -translate-x-1/2">
           <Link href="/" className="group">
-            <h1 className="font-bold text-3xl md:text-4xl bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent group-hover:from-pink-400 group-hover:to-purple-400 transition-all duration-300">
+            <h1 className="font-bold text-2xl md:text-3xl lg:text-4xl bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent group-hover:from-pink-400 group-hover:to-purple-400 transition-all duration-300 whitespace-nowrap">
               🎮 GameFlow
             </h1>
           </Link>

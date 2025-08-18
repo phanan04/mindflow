@@ -88,7 +88,7 @@ export default function MenuModal({
           <div className="flex items-center justify-between mb-4">
             <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Quick Actions</span>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <div className="flex-1">
               <SearchButton />
             </div>
