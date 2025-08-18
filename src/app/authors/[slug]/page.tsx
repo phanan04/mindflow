@@ -65,7 +65,7 @@ export default async function AuthorPage({
             <div className="relative p-8 md:p-12">
               <div className="flex flex-col lg:flex-row gap-8 items-start">
                 {/* Avatar & Basic Info */}
-                <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+                <div className="flex flex-row gap-6 items-center sm:items-start">
                   <div className="relative">
                     <Image
                       src={author.data.avatar.url || "/assets/images/default-avatar.png"}
