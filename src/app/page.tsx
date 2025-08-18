@@ -3,6 +3,7 @@ import CategoryArticleCard from "@/Components/card/CategoryArticleCard";
 import { getPosts } from "@/lib/getPosts";
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "NextGame - Gaming News & Reviews",
@@ -55,7 +56,7 @@ export default async function HomePage() {
               🎮 Featured Games
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Don't miss these trending games and reviews
+              Don&apos;t miss these trending games and reviews
             </p>
           </div>
           
@@ -63,9 +64,11 @@ export default async function HomePage() {
             {featuredPosts.map((post, index) => (
               <div key={post.id} className="group relative overflow-hidden rounded-xl bg-white dark:bg-zinc-800 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
                 <div className="aspect-video overflow-hidden">
-                  <img
+                  <Image
                     src={post.coverImage}
                     alt={post.title}
+                    width={400}
+                    height={225}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
