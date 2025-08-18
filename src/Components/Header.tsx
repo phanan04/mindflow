@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <header
-      className="w-full py-2 px-4 bg-black text-white dark:bg-zinc-800 dark:text-white gap-2 relative"
+      className="w-full py-3 px-4 bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white dark:from-zinc-900 dark:via-zinc-800 dark:to-zinc-900 dark:text-white shadow-lg relative"
       role="banner"
     >
       <div className="mx-auto flex items-center justify-between relative">
@@ -28,41 +28,45 @@ const Header = () => {
           </button>
           
           <nav className="hidden md:flex items-center gap-6">
-            <Link href="/" className="hover:text-blue-500 dark:hover:text-white">
-              Home
+            <Link href="/" className="flex items-center gap-2 hover:text-purple-400 dark:hover:text-purple-400 transition-colors duration-300">
+              🏠 <span>Home</span>
             </Link>
             <Link
               href="/categories/all-posts"
-              className="hover:text-blue-500 dark:hover:text-white"
+              className="flex items-center gap-2 hover:text-purple-400 dark:hover:text-purple-400 transition-colors duration-300"
             >
-              Category
+              📚 <span>Articles</span>
             </Link>
             <Link
               href="/authors"
-              className="hover:text-blue-500 dark:hover:text-white"
+              className="flex items-center gap-2 hover:text-purple-400 dark:hover:text-purple-400 transition-colors duration-300"
             >
-              About
+              👥 <span>Authors</span>
             </Link>
             <Link
               href="/contact"
-              className="hover:text-blue-500 dark:hover:text-white"
+              className="flex items-center gap-2 hover:text-purple-400 dark:hover:text-purple-400 transition-colors duration-300"
             >
-              Contact
+              📧 <span>Contact</span>
             </Link>
           </nav>
         </div>
 
         <div className="absolute left-1/2 transform -translate-x-1/2">
-          <Link href="/">
-            <h1 className="font-serif font-bold text-4xl hover:text-blue-500 text-white dark:text-white">
-              NextGame
+          <Link href="/" className="group">
+            <h1 className="font-bold text-3xl md:text-4xl bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent group-hover:from-pink-400 group-hover:to-purple-400 transition-all duration-300">
+              🎮 GameFlow
             </h1>
           </Link>
         </div>
 
-        <div className="hidden md:flex justify-end items-center gap-2 text-lg text-neutral-600 hover:text-blue-700 dark:text-neutral-300 w-1/3">
-          <ThemeToggle />
-          <SearchButton />
+        <div className="hidden md:flex justify-end items-center gap-3 text-lg text-neutral-300 w-1/3">
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <div className="transform hover:scale-110 transition-transform duration-300">
+              <SearchButton />
+            </div>
+          </div>
         </div>
       </div>
 

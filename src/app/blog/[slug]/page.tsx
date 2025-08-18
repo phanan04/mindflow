@@ -51,6 +51,8 @@ export default async function BlogPage({
   const client = createClient();
   const post = await client.getByUID("post", slug);
 
+  if (!post) return notFound();
+
   return (
     <article className="w-full max-w-[1000px] mx-auto px-4 py-8 flex-1">
       <div className="flex items-center space-x-3 mb-4">
@@ -94,12 +96,9 @@ export default async function BlogPage({
           src={post.data.coverImage.url}
           width={1000}
           height={500}
-          alt={
-            typeof post.data.title === "string"
-              ? post.data.title
-              : asText(post.data.title) || ""
-          }
+          alt={post.data.title || ""}
           className="object-cover mb-6"
+          
         />
       ) : null}
 
