@@ -10,9 +10,8 @@ export default async function ContactPage() {
     <div className="max-w-screen-xl mx-auto p-5">
       <h1 className="text-3xl font-bold text-center pb-6">Contact</h1>
 
-      <div className="flex flex-col md:flex-row gap-8 max-w-[1000px] mx-auto">
+      <div className="flex flex-col md:flex-row gap-8 max-w-[1000px] mx-auto mb-4">
         
-        {/* Cột thông tin */}
         <div className="flex-1 bg-gray-50 dark:bg-zinc-800 p-6 rounded-lg shadow-sm">
           <h2 className="text-xl font-semibold mb-4">Get in Touch</h2>
           <p className="flex items-center gap-2">
@@ -34,11 +33,10 @@ export default async function ContactPage() {
           </div>
         </div>
 
-        {/* Form liên hệ */}
         <form
           action="https://formspree.io/f/xblkpjbl"
           method="POST"
-          className="flex-1 flex flex-col gap-4 p-6 bg-gray-50 dark:bg-zinc-800 rounded-lg shadow-sm "
+          className="flex-1 flex flex-col gap-4 p-6 bg-gray-50 dark:bg-zinc-800 rounded-lg shadow-sm"
         >
           <div className="flex gap-4">
             <div className="flex-1">

@@ -26,7 +26,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Header />
-              <main className="p-2 dark:bg-transparent dark:text-white flex-1">
+              <main className=" dark:bg-transparent dark:text-white flex-1">
                 {children}
                 <SpeedInsights />
               </main>

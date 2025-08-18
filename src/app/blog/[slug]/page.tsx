@@ -49,9 +49,7 @@ export default async function BlogPage({
 }) {
   const { slug } = await params;
   const client = createClient();
-  const post = await client.getByUID("post", slug, {});
-
-  if (!post) return notFound();
+  const post = await client.getByUID("post", slug);
 
   return (
     <article className="w-full max-w-[1000px] mx-auto px-4 py-8 flex-1">

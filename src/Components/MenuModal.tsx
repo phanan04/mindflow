@@ -35,7 +35,7 @@ export default function MenuModal({
         <nav className="flex flex-col gap-4 px-4 text-black dark:bg-zinc-900 dark:text-white">
           <Link href="/" className="text-base hover:text-blue-600 ">Home</Link>
           <Link href="/categories/all-posts" className="text-base hover:text-blue-600">Category</Link>
-          <Link href="/authors" className="text-base hover:text-blue-600">Authors</Link>
+          <Link href="/authors" className="text-base hover:text-blue-600">About</Link>
           <Link href="/contact" className="text-base hover:text-blue-600">Contact</Link>
           <SearchButton />
           <ThemeToggle />

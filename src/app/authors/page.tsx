@@ -39,7 +39,7 @@ export default async function AuthorsPage() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
           {authors.map((author) => (
-            <div key={author.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            <div key={author.id} className="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg dark:hover:bg-gray-800/80 transition-shadow">
               <Link href={`/authors/${author.uid}`} className="block">
                 <div className="flex flex-col items-center">
                   <Image
@@ -53,20 +53,11 @@ export default async function AuthorsPage() {
                     {author.data.name || ""}
                   </h4>
                   <p className="italic text-gray-500 dark:text-gray-400 mb-3">Author</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3">
-                    {author.data.bio || ""}
-                  </p>
                 </div>
               </Link>
             </div>
           ))}
         </div>
-        
-        {authors.length === 0 && (
-          <div className="text-center py-8">
-            <p className="text-gray-500 dark:text-gray-400">No authors found.</p>
-          </div>
-        )}
       </div>
     </div>
   );
