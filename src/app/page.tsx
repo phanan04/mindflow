@@ -7,7 +7,7 @@ import { Suspense } from "react";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "NextGame - Tin Tức & Đánh Giá Game",
+  title: "GameFLow - Tin Tức & Đánh Giá Game",
   description: "Điểm đến tuyệt vời cho tin tức game mới nhất, đánh giá và cập nhật",
 };
 
