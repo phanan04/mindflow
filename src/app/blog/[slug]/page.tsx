@@ -9,6 +9,7 @@ import ShareButtons from "@/Components/ShareButtons";
 import { Metadata } from "next";
 import { asText } from "@prismicio/client";
 import GiscusComments from "@/Components/GiscusComments";
+import * as prismic from "@prismicio/client";
 
 export async function generateMetadata({
   params,
@@ -19,6 +20,10 @@ export async function generateMetadata({
   const client = createClient();
   const post = await client.getByUID("post", slug);
 
+  if (!post) return notFound();
+  if (!isFilled.contentRelationship(post.data.category)) {
+    return notFound();
+  }
   return {
     title: post.data.title || "",
     description: post.data.excerpt || "",
@@ -53,14 +58,17 @@ export default async function BlogPage({
 
   if (!post) return notFound();
 
-  let relatedPosts = await client.getAllByType("post", {
-    filter: [
-      { path: "my.post.category", op: "at", value: post.data.category.id },
-      { path: "my.post.uid", op: "not", value: slug },
-    ],
-    pageSize: 3,
-    fetchLinks: ["author.name", "author.avatar"],
-  });
+  let relatedPosts: any[] = [];
+  if (isFilled.contentRelationship(post.data.category)) {
+    relatedPosts = await client.getAllByType("post", {
+      predicates: [
+        prismic.predicate.at("my.post.category", post.data.category.id),
+        prismic.predicate.not("my.post.uid", slug),
+      ],
+      pageSize: 3,
+      fetchLinks: ["author.name", "author.avatar"],
+    });
+  }
 
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-900">
@@ -78,43 +86,56 @@ export default async function BlogPage({
           </h1>
 
           <div className="flex items-center justify-center gap-4 mb-8">
-              <div className="relative flex flex-row">
-                <Image
-                  src={
-                    post.data.author.data?.avatar.url ||
-                    "/public/assets/images/default-avatar.png"
-                  }
-                  width={48}
-                  height={48}
-                  alt={post.data.author?.data?.name || "Author"}
-                  className="relative rounded-full border-2 border-white dark:border-zinc-700 shadow-lg"
-                />
-              </div>
+            <div className="relative flex flex-row">
+              <Image
+                src={
+                  isFilled.contentRelationship(post.data.author) &&
+                  post.data.author.data?.avatar.url
+                    ? post.data.author.data.avatar.url
+                    : "/public/assets/images/default-avatar.png"
+                }
+                width={48}
+                height={48}
+                alt={
+                  isFilled.contentRelationship(post.data.author) &&
+                  post.data.author.data?.name
+                    ? post.data.author.data.name
+                    : "Author"
+                }
+                className="relative rounded-full border-2 border-white dark:border-zinc-700 shadow-lg"
+              />
+            </div>
 
             <div className="text-left">
+              {isFilled.contentRelationship(post.data.author) && post.data.author.uid ? (
                 <Link
                   href={`/authors/${post.data.author.uid}`}
                   className="block text-lg font-semibold text-zinc-800 dark:text-zinc-200 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors"
                 >
-                  {post.data.author.data.name || "Unknown Author"}
+                  {post.data.author.data?.name || "Unknown Author"}
                 </Link>
-              
+              ) : (
+                <span className="block text-lg font-semibold text-zinc-800 dark:text-zinc-200">
+                  Unknown Author
+                </span>
+              )}
+
               <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                {post.data.date }
+                {post.data.date}
               </p>
             </div>
           </div>
         </div>
 
-          <div className="relative mb-12 rounded-lg overflow-hidden shadow-sm border border-zinc-200 dark:border-zinc-700">
-            <Image
-              src={post.data.coverImage.url}
-              width={1200}
-              height={600}
-              alt={post.data.title || ""}
-              className="w-full h-[400px] md:h-[500px] object-cover"
-            />
-          </div>
+        <div className="relative mb-12 rounded-lg overflow-hidden shadow-sm border border-zinc-200 dark:border-zinc-700">
+          <Image
+            src={post.data.coverImage?.url || "/public/assets/images/default-cover.png"}
+            width={1200}
+            height={600}
+            alt={post.data.title || ""}
+            className="w-full h-[400px] md:h-[500px] object-cover"
+          />
+        </div>
 
         <div className="bg-white dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700 p-8 md:p-12 mb-12">
           <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-zinc-800 dark:prose-headings:text-zinc-200 prose-p:text-zinc-600 dark:prose-p:text-zinc-300 prose-a:text-zinc-700 dark:prose-a:text-zinc-300 hover:prose-a:text-zinc-900 dark:hover:prose-a:text-white prose-strong:text-zinc-800 dark:prose-strong:text-zinc-200">
@@ -141,16 +162,25 @@ export default async function BlogPage({
           <ul className="space-y-4">
             {relatedPosts.map((post) => (
               <li key={post.uid}>
-                <Link href={`/blog/${post.uid}`} className="text-zinc-800 dark:text-zinc-200 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors">
+                <Link
+                  href={`/blog/${post.uid}`}
+                  className="text-zinc-800 dark:text-zinc-200 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors"
+                >
                   <Image
-                    src={post.data.coverImage?.url || "/public/assets/images/default-cover.png"}
+                    src={
+                      post.data.coverImage?.url ||
+                      "/public/assets/images/default-cover.png"
+                    }
                     width={40}
                     height={40}
                     alt={post.data.title || "Related Post"}
                     className="inline-block mr-3 rounded-lg object-cover"
                   />
                   {post.data.title}
-                  <span className="text-zinc-500 dark:text-zinc-400"> - {post.data.date}</span>
+                  <span className="text-zinc-500 dark:text-zinc-400">
+                    {" "}
+                    - {post.data.date}
+                  </span>
                 </Link>
               </li>
             ))}
