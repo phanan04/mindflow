@@ -27,7 +27,7 @@ export default function SearchButton() {
       <button
         aria-label="Tìm kiếm"
         type="submit"
-        className="p-1.5 text-gray-600 dark:text-black hover:text-gray-800 transition-colors"
+        className="p-1.5 text-zinc-600 dark:text-black hover:text-zinc-800 transition-colors"
       >
         <Search size={16} />
       </button>

@@ -27,21 +27,21 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="//images.prismic.io" />
         <link rel="dns-prefetch" href="//images.unsplash.com" />
       </head>
-      <body className="dark:bg-zinc-900 dark:text-white">
-        <div className="min-h-screen bg-white/90 dark:bg-zinc-900/90 flex flex-col">
+      <body className="dark:bg-black dark:text-white">
+        <div className="min-h-screen bg-white/95 dark:bg-black flex flex-col">
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-            <Suspense fallback={<div className="h-20 bg-white dark:bg-zinc-900" />}>
+            <Suspense fallback={<div className="h-20 bg-white dark:bg-black" />}>
               <Header />
             </Suspense>
-              <main className=" dark:bg-transparent dark:text-white flex-1">
+              <main className="dark:bg-transparent dark:text-white flex-1">
                 {children}
               </main>
-            <Suspense fallback={<div className="h-32 bg-gray-50 dark:bg-zinc-800" />}>
+            <Suspense fallback={<div className="h-32 bg-zinc-50 dark:bg-zinc-900" />}>
               <Footer />
             </Suspense>
             {/* Di chuyển SpeedInsights để không block initial render */}

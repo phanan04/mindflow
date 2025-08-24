@@ -36,24 +36,24 @@ export default function MenuModal({
       />
 
       {/* Sidebar panel */}
-      <div className="fixed top-0 left-0 h-full w-80 bg-white dark:bg-gray-800 z-50 shadow-2xl transform transition-transform duration-300 ease-out">
+      <div className="fixed top-0 left-0 h-full w-80 bg-white dark:bg-zinc-900 z-50 shadow-xl transform transition-transform duration-300 ease-out">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20">
+        <div className="flex items-center justify-between p-6 border-b border-zinc-200 dark:border-zinc-700">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">M</span>
+            <div className="w-8 h-8 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-lg flex items-center justify-center">
+              <span className="font-bold text-sm">G</span>
             </div>
             <div>
-              <h2 className="font-bold text-lg text-gray-800 dark:text-gray-200">MindFlow</h2>
-              <p className="text-xs text-gray-500 dark:text-gray-400">Gaming Community</p>
+              <h2 className="font-bold text-lg text-zinc-900 dark:text-white">GameFlow</h2>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400">Gaming Blog</p>
             </div>
           </div>
           <button 
             onClick={onClose} 
-            className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors duration-200"
+            className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg transition-colors duration-200"
             aria-label="Đóng menu điều hướng"
           >
-            <X size={20} className="text-gray-600 dark:text-gray-400"/>
+            <X size={20} className="text-zinc-600 dark:text-zinc-400"/>
           </button> 
         </div>
 
@@ -62,50 +62,50 @@ export default function MenuModal({
           <Link 
             href="/" 
             onClick={onClose}
-            className="flex items-center gap-4 p-4 rounded-xl hover:bg-purple-50 dark:hover:bg-purple-900/20 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-200 group"
+            className="flex items-center gap-4 p-4 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-colors duration-200"
           >
-            <Home size={20} className="text-purple-500 group-hover:text-purple-600" />
+            <Home size={20} />
             <span className="font-medium">Trang Chủ</span>
           </Link>
           
           <Link 
             href="/categories/all-posts" 
             onClick={onClose}
-            className="flex items-center gap-4 p-4 rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/20 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 group"
+            className="flex items-center gap-4 p-4 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-colors duration-200"
           >
-            <BookOpen size={20} className="text-blue-500 group-hover:text-blue-600" />
+            <BookOpen size={20} />
             <span className="font-medium">Bài Viết</span>
           </Link>
           
           <Link 
             href="/authors" 
             onClick={onClose}
-            className="flex items-center gap-4 p-4 rounded-xl hover:bg-green-50 dark:hover:bg-green-900/20 text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-all duration-200 group"
+            className="flex items-center gap-4 p-4 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-colors duration-200"
           >
-            <Users size={20} className="text-green-500 group-hover:text-green-600" />
+            <Users size={20} />
             <span className="font-medium">Giới Thiệu</span>
           </Link>
           
           <Link 
             href="/contact" 
             onClick={onClose}
-            className="flex items-center gap-4 p-4 rounded-xl hover:bg-orange-50 dark:hover:bg-orange-900/20 text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition-all duration-200 group"
+            className="flex items-center gap-4 p-4 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-colors duration-200"
           >
-            <Mail size={20} className="text-orange-500 group-hover:text-orange-600" />
+            <Mail size={20} />
             <span className="font-medium">Liên Hệ</span>
           </Link>
         </nav>
 
         {/* Bottom Section */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50">
+        <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-zinc-200 dark:border-zinc-700">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Quick Actions</span>
+            <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400">Quick Actions</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="flex-1">
               <SearchButton />
             </div>
-            <div className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <div className="p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
               <ThemeToggle />
             </div>
           </div>
