@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/prismicio";
-import { FaEnvelope, FaPinterest, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
+import { FaEnvelope, FaYoutube, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 import { FaFacebook, FaXTwitter } from "react-icons/fa6";
 
 export default async function ContactPage() {
@@ -69,7 +69,7 @@ export default async function ContactPage() {
                 <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-200 mb-4">Theo Dõi Chúng Tôi</h3>
                 <div className="flex gap-4">
                   <a 
-                    href="#" 
+                    href="https://www.facebook.com/pann4/" 
                     aria-label="Facebook" 
                     className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors duration-200"
                   >
@@ -84,10 +84,10 @@ export default async function ContactPage() {
                   </a>
                   <a 
                     href="#" 
-                    aria-label="Pinterest" 
+                    aria-label="Youtube" 
                     className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white hover:bg-red-700 transition-colors duration-200"
                   >
-                    <FaPinterest className="text-lg" />
+                    <FaYoutube className="text-lg" />
                   </a>
                 </div>
               </div>
@@ -127,7 +127,7 @@ export default async function ContactPage() {
                     type="text"
                     name="First-Name"
                     required
-                    className="w-full py-3 px-4 bg-zinc-50 dark:bg-zinc-700 border border-zinc-300 dark:border-zinc-600 rounded-lg text-zinc-800 dark:text-zinc-200 placeholder-zinc-500 focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-colors duration-200"
+                    className="w-full py-3 px-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg text-zinc-800 dark:text-zinc-200 placeholder-zinc-500 focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-colors duration-200"
                     placeholder="John"
                   />
                 </div>
@@ -139,7 +139,7 @@ export default async function ContactPage() {
                     type="text"
                     name="Last-Name"
                     required
-                    className="w-full py-3 px-4 bg-zinc-50 dark:bg-zinc-700 border border-zinc-300 dark:border-zinc-600 rounded-lg text-zinc-800 dark:text-zinc-200 placeholder-zinc-500 focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-colors duration-200"
+                    className="w-full py-3 px-4 bg-zinc-50 dark:bg-zinc-700  rounded-lg text-zinc-800 dark:text-zinc-200 placeholder-zinc-500 focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-colors duration-200"
                     placeholder="Doe"
                   />
                 </div>
@@ -153,7 +153,7 @@ export default async function ContactPage() {
                   type="email"
                   name="Email"
                   required
-                  className="w-full py-3 px-4 bg-zinc-50 dark:bg-zinc-700 border border-zinc-300 dark:border-zinc-600 rounded-lg text-zinc-800 dark:text-zinc-200 placeholder-zinc-500 focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-colors duration-200"
+                  className="w-full py-3 px-4 bg-zinc-50 dark:bg-zinc-700  rounded-lg text-zinc-800 dark:text-zinc-200 placeholder-zinc-500 focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-colors duration-200"
                   placeholder="john@example.com"
                 />
               </div>
@@ -165,7 +165,7 @@ export default async function ContactPage() {
                 <input
                   type="text"
                   name="Subject"
-                  className="w-full py-3 px-4 bg-zinc-50 dark:bg-zinc-700 border border-zinc-300 dark:border-zinc-600 rounded-lg text-zinc-800 dark:text-zinc-200 placeholder-zinc-500 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                  className="w-full py-3 px-4 bg-zinc-50 dark:bg-zinc-700  rounded-lg text-zinc-800 dark:text-zinc-200 placeholder-zinc-500 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
                   placeholder="What's this about?"
                 />
               </div>
@@ -178,7 +178,7 @@ export default async function ContactPage() {
                   name="Message"
                   required
                   rows={6}
-                  className="w-full py-3 px-4 bg-zinc-50 dark:bg-zinc-700 border border-zinc-300 dark:border-zinc-600 rounded-lg text-zinc-800 dark:text-zinc-200 placeholder-zinc-500 focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-colors duration-200 resize-none"
+                  className="w-full py-3 px-4 bg-zinc-50 dark:bg-zinc-700  rounded-lg text-zinc-800 dark:text-zinc-200 placeholder-zinc-500 focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-colors duration-200 resize-none"
                   placeholder="Tell us about your project, question, or how we can help..."
                 />
               </div>

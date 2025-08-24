@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-export default function SearchButton() {
+export default function SearchButton({ onSearchDone }: { onSearchDone?: () => void }) {
   const [searchValue, setSearchValue] = useState("");
   const router = useRouter();
 
@@ -12,7 +12,8 @@ export default function SearchButton() {
     e.preventDefault();
     if(!searchValue.trim()) return;
     router.push(`/search?query=${searchValue.trim()}`);
-    setSearchValue(""); 
+    setSearchValue("");
+    if (onSearchDone) onSearchDone();
   };
 
   const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {

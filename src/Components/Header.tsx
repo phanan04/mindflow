@@ -2,18 +2,17 @@
 
 import Link from "next/link";
 import { ThemeToggle } from "./theme/ThemeToggle";
-import { useState, memo, lazy, Suspense } from "react";
+import { useState, memo } from "react";
 import { BookOpen, Home, Mail, Menu, Users } from "lucide-react";
+import SearchButton from "@/app/search/SearchButton";
+import MenuModal from "./MenuModal";
 
-const SearchButton = lazy(() => import("@/app/search/SearchButton"));
-const MenuModal = lazy(() => import("./MenuModal"));
-
-const Header = memo(() => {
+const Header = memo(() => { 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <header
-      className="w-full py-4 px-4 bg-white dark:bg-black text-zinc-800 dark:text-white border-b border-zinc-200 dark:border-zinc-700 shadow-sm"
+      className="w-full py-2 px-2 bg-white dark:bg-black text-zinc-800 dark:text-white border-b border-zinc-200 dark:border-zinc-700 shadow-sm"
       role="banner"
     >
       <div className="mx-auto flex items-center justify-between relative">
@@ -73,18 +72,14 @@ const Header = memo(() => {
           <div className="flex items-center gap-4">
             <ThemeToggle />
             <div>
-              <Suspense fallback={<div className="w-8 h-8 bg-zinc-200 dark:bg-slate-700 rounded animate-pulse" />}>
-                <SearchButton />
-              </Suspense>
+              <SearchButton onSearchDone={() => setIsMenuOpen(false)} />
             </div>
           </div>
         </div>
       </div>
 
       {isMenuOpen && (
-        <Suspense fallback={null}>
-          <MenuModal isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-        </Suspense>
+        <MenuModal isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       )}
     </header>
   );

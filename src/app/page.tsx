@@ -1,7 +1,6 @@
 import ArticleCard from "@/Components/card/ArticleCard";
 import CategoryArticleCard from "@/Components/card/CategoryArticleCard";
 import { getPosts } from "@/lib/getPosts";
-import { Section } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
@@ -20,7 +19,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <section className="bg-white dark:bg-black dark:border-zinc-700 py-16 md:py-24">
+      <section className="dark:border-zinc-700 py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-6">
             Welcome to GameFlow
@@ -48,7 +47,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Divider */}
       <div className="max-w-7xl mx-auto px-4">
         <div className="h-px bg-gradient-to-r from-transparent via-zinc-200 dark:via-zinc-700 to-transparent"></div>
       </div>

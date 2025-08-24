@@ -53,6 +53,15 @@ export default async function BlogPage({
 
   if (!post) return notFound();
 
+  let relatedPosts = await client.getAllByType("post", {
+    filter: [
+      { path: "my.post.category", op: "at", value: post.data.category.id },
+      { path: "my.post.uid", op: "not", value: slug },
+    ],
+    pageSize: 3,
+    fetchLinks: ["author.name", "author.avatar"],
+  });
+
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-900">
       <article className="w-full max-w-4xl mx-auto px-4 py-12">
@@ -65,14 +74,11 @@ export default async function BlogPage({
           </div>
 
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-zinc-900 dark:text-white leading-tight">
-            {typeof post.data.title === "string"
-              ? post.data.title
-              : asText(post.data.title) || ""}
+            {post.data.title}
           </h1>
 
           <div className="flex items-center justify-center gap-4 mb-8">
-            {isFilled.contentRelationship(post?.data?.author) ? (
-              <div className="relative">
+              <div className="relative flex flex-row">
                 <Image
                   src={
                     post.data.author.data?.avatar.url ||
@@ -84,31 +90,22 @@ export default async function BlogPage({
                   className="relative rounded-full border-2 border-white dark:border-zinc-700 shadow-lg"
                 />
               </div>
-            ) : null}
 
             <div className="text-left">
-              {post.data.author &&
-              "data" in post.data.author &&
-              post.data.author.data ? (
                 <Link
                   href={`/authors/${post.data.author.uid}`}
                   className="block text-lg font-semibold text-zinc-800 dark:text-zinc-200 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors"
                 >
                   {post.data.author.data.name || "Unknown Author"}
                 </Link>
-              ) : (
-                <p className="text-lg font-semibold text-zinc-800 dark:text-zinc-200">
-                  Unknown Author
-                </p>
-              )}
+              
               <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                {post.data.date ? formatDate(post.data.date as string) : ""}
+                {post.data.date }
               </p>
             </div>
           </div>
         </div>
 
-        {post.data.coverImage?.url ? (
           <div className="relative mb-12 rounded-lg overflow-hidden shadow-sm border border-zinc-200 dark:border-zinc-700">
             <Image
               src={post.data.coverImage.url}
@@ -118,7 +115,6 @@ export default async function BlogPage({
               className="w-full h-[400px] md:h-[500px] object-cover"
             />
           </div>
-        ) : null}
 
         <div className="bg-white dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700 p-8 md:p-12 mb-12">
           <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-zinc-800 dark:prose-headings:text-zinc-200 prose-p:text-zinc-600 dark:prose-p:text-zinc-300 prose-a:text-zinc-700 dark:prose-a:text-zinc-300 hover:prose-a:text-zinc-900 dark:hover:prose-a:text-white prose-strong:text-zinc-800 dark:prose-strong:text-zinc-200">
@@ -138,6 +134,27 @@ export default async function BlogPage({
 
         <div className="bg-white dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700 p-8">
           <GiscusComments />
+        </div>
+
+        <div className="bg-white dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700 p-8 mt-12">
+          <h2 className="text-lg font-semibold mb-4">Related Posts</h2>
+          <ul className="space-y-4">
+            {relatedPosts.map((post) => (
+              <li key={post.uid}>
+                <Link href={`/blog/${post.uid}`} className="text-zinc-800 dark:text-zinc-200 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors">
+                  <Image
+                    src={post.data.coverImage?.url || "/public/assets/images/default-cover.png"}
+                    width={40}
+                    height={40}
+                    alt={post.data.title || "Related Post"}
+                    className="inline-block mr-3 rounded-lg object-cover"
+                  />
+                  {post.data.title}
+                  <span className="text-zinc-500 dark:text-zinc-400"> - {post.data.date}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </article>
     </div>

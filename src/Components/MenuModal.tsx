@@ -103,7 +103,7 @@ export default function MenuModal({
           </div>
           <div className="flex items-center gap-2">
             <div className="flex-1">
-              <SearchButton />
+              <SearchButton onSearchDone={onClose} />
             </div>
             <div className="p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
               <ThemeToggle />
