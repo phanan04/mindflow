@@ -20,20 +20,20 @@ export default function GiscusComments() {
           Chia sẻ ý kiến và thảo luận về bài viết cùng cộng đồng
         </p>
       </div>
-      
+
       <div className="bg-zinc-50 dark:bg-zinc-700/50 rounded-xl p-6">
         <Giscus
           id="comments"
           repo="phanan04/mindflow"
           repoId="R_kgDOPPeOZw"
-          category="General" 
+          category="General"
           categoryId="DIC_kwDOPPeOZ84CuH3J"
           mapping="pathname"
           strict="0"
           reactionsEnabled="1"
           emitMetadata="0"
           inputPosition="bottom"
-          theme={theme === 'dark' ? 'dark' : 'light'} 
+          theme={theme === "dark" ? "dark" : "light"}
           lang="vi"
           loading="lazy"
         />

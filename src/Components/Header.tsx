@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { ThemeToggle } from "./theme/ThemeToggle";
-import { useState, memo } from "react";
+import { useState } from "react";
 import { BookOpen, Home, Mail, Menu, Users } from "lucide-react";
 import SearchButton from "@/app/search/SearchButton";
 import MenuModal from "./MenuModal";
 
-const Header = memo(() => { 
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -16,8 +16,7 @@ const Header = memo(() => {
       role="banner"
     >
       <div className="mx-auto flex items-center justify-between relative">
-        {/* Navigation Menu */}
-        <div className="flex items-center justify-start gap-8 text-sm font-medium text-zinc-700 dark:text-zinc-300 w-1/3">
+        <div className="flex items-center justify-start gap-8 text-sm whitespace-nowrap font-medium text-zinc-700 dark:text-zinc-300 w-1/3">
           {/* Mobile hamburger button */}
           <button
             onClick={() => setIsMenuOpen(true)}
@@ -26,40 +25,39 @@ const Header = memo(() => {
           >
             <Menu size={20} />
           </button>
-          
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
-            <Link 
-              href="/" 
+
+          <nav className="hidden lg:flex items-center gap-6">
+            <Link
+              href="/"
               className="flex items-center gap-2 hover:text-zinc-900 dark:hover:text-white transition-colors duration-200"
             >
               <Home size={16} />
-              <span>Trang Chủ</span>
+              <span className="whitespace-nowrap">Trang Chủ</span>
             </Link>
             <Link
               href="/categories/all-posts"
               className="flex items-center gap-2 hover:text-zinc-900 dark:hover:text-white transition-colors duration-200"
             >
               <BookOpen size={16} />
-              <span>Bài Viết</span>
+              <span className="whitespace-nowrap">Bài Viết</span>
             </Link>
             <Link
               href="/authors"
               className="flex items-center gap-2 hover:text-zinc-900 dark:hover:text-white transition-colors duration-200"
             >
               <Users size={16} />
-              <span>Giới Thiệu</span>
+              <span className="whitespace-nowrap">Giới Thiệu</span>
             </Link>
             <Link
               href="/contact"
               className="flex items-center gap-2 hover:text-zinc-900 dark:hover:text-white transition-colors duration-200"
             >
               <Mail size={16} />
-              <span>Liên Hệ</span>
+              <span className="whitespace-nowrap">Liên Hệ</span>
             </Link>
           </nav>
         </div>
-        
+
         <div className="absolute left-1/2 transform -translate-x-1/2">
           <Link href="/" className="group">
             <h1 className="font-bold text-2xl md:text-3xl text-zinc-900 dark:text-white group-hover:text-zinc-700 dark:group-hover:text-zinc-300 transition-colors duration-200 whitespace-nowrap">
@@ -83,8 +81,8 @@ const Header = memo(() => {
       )}
     </header>
   );
-});
+};
 
-Header.displayName = 'Header';
+Header.displayName = "Header";
 
 export default Header;

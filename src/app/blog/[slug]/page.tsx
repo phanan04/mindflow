@@ -10,6 +10,7 @@ import { Metadata } from "next";
 import { asText } from "@prismicio/client";
 import GiscusComments from "@/Components/GiscusComments";
 import * as prismic from "@prismicio/client";
+import Breadcrumb from "@/Components/Breadcrumb";
 
 export async function generateMetadata({
   params,
@@ -18,7 +19,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const client = createClient();
-  const post = await client.getByUID("post", slug);
+  const post = await client.getByUID("post", slug, {
+    fetchLinks: ["category.name", "author.name", "author.avatar"],
+  });
 
   if (!post) return notFound();
   if (!isFilled.contentRelationship(post.data.category)) {
@@ -61,18 +64,31 @@ export default async function BlogPage({
   let relatedPosts: any[] = [];
   if (isFilled.contentRelationship(post.data.category)) {
     relatedPosts = await client.getAllByType("post", {
-      predicates: [
-        prismic.predicate.at("my.post.category", post.data.category.id),
-        prismic.predicate.not("my.post.uid", slug),
+      filters: [
+        prismic.filter.at("my.post.category", post.data.category.id),
+        prismic.filter.not("my.post.uid", slug),
       ],
       pageSize: 3,
-      fetchLinks: ["author.name", "author.avatar"],
+      fetchLinks: ["category.name", "author.name", "author.avatar"],
     });
   }
 
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-900">
       <article className="w-full max-w-4xl mx-auto px-4 py-12">
+        <Breadcrumb
+          category={
+            isFilled.contentRelationship(post.data.category) &&
+            post.data.category.uid &&
+            (post.data.category.data as { name: string }).name
+              ? {
+                  uid: post.data.category.uid,
+                  name: (post.data.category.data as { name: string }).name,
+                }
+              : undefined
+          }
+          postTitle={post.data.title ?? undefined}
+        />
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-zinc-100 dark:bg-zinc-800 rounded-full px-6 py-2 mb-6">
             <span className="text-lg">📰</span>
@@ -107,7 +123,8 @@ export default async function BlogPage({
             </div>
 
             <div className="text-left">
-              {isFilled.contentRelationship(post.data.author) && post.data.author.uid ? (
+              {isFilled.contentRelationship(post.data.author) &&
+              post.data.author.uid ? (
                 <Link
                   href={`/authors/${post.data.author.uid}`}
                   className="block text-lg font-semibold text-zinc-800 dark:text-zinc-200 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors"
@@ -129,7 +146,10 @@ export default async function BlogPage({
 
         <div className="relative mb-12 rounded-lg overflow-hidden shadow-sm border border-zinc-200 dark:border-zinc-700">
           <Image
-            src={post.data.coverImage?.url || "/public/assets/images/default-cover.png"}
+            src={
+              post.data.coverImage?.url ||
+              "/public/assets/images/default-cover.png"
+            }
             width={1200}
             height={600}
             alt={post.data.title || ""}

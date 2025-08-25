@@ -8,7 +8,7 @@ export async function getPostByKeyword(query?: string) {
 
   const [byTitle] = await Promise.all([
     client.getAllByType("post", {
-      predicates: [prismic.predicate.fulltext("my.post.title", query),],
+      filters: [prismic.filter.fulltext("my.post.title", query)],
     }),
    
   ]);

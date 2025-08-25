@@ -49,19 +49,14 @@ export default async function CategoryPage({ params }: Props) {
   const categoryUid = slug;
 
   const categories = await client.getAllByType("category");
-  const allCategories = categories;
 
   let posts;
   let currentCategoryName = "All Posts";
-  let currentCategoryDescription = "Khám phá tất cả bài viết, đánh giá và tin tức về trò chơi";
 
   if (categoryUid == "all-posts") {
     posts = await client.getAllByType("post", {
       fetchLinks: ["category.name", "author.name", "author.avatar"],
     });
-    currentCategoryName = "All Posts";
-    currentCategoryDescription =
-      "Khám phá tất cả bài viết, đánh giá và tin tức về trò chơi";
   } else {
     const category = await client.getByUID("category", categoryUid);
     posts = await client.getAllByType("post", {
@@ -69,43 +64,16 @@ export default async function CategoryPage({ params }: Props) {
       fetchLinks: ["category.name", "author.name", "author.avatar"],
     });
     currentCategoryName = category.data.name || categoryUid;
-    currentCategoryDescription =
-      category.data.summary ||
-      `Khám phá ${category.data.name} trò chơi và nội dung`;
   }
-
-  const categoryEmojis: { [key: string]: string } = {
-    action: "⚔️",
-    rpg: "🧙",
-    strategy: "🎯",
-    adventure: "🗺️",
-    sports: "⚽",
-    racing: "🏎️",
-    puzzle: "🧩",
-    horror: "👻",
-    shooter: "🔫",
-    simulation: "🛠️",
-    "all-posts": "🎮",
-  };
-
-  const getEmojiForCategory = (uid: string) => {
-    return categoryEmojis[uid.toLowerCase()] || "🎮";
-  };
 
   return (
     <>
       <section className="bg-white dark:bg-zinc-900 py-16 mb-8">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center">
-            <div className="text-4xl mb-4">
-              {getEmojiForCategory(categoryUid)}
-            </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-zinc-900 dark:text-white">
               {currentCategoryName}
             </h1>
-            <p className="text-lg md:text-xl text-zinc-600 dark:text-zinc-300 mb-6 max-w-2xl mx-auto">
-              {currentCategoryDescription}
-            </p>
           </div>
         </div>
       </section>
@@ -116,17 +84,16 @@ export default async function CategoryPage({ params }: Props) {
             Browse Categories
           </h2>
           <div className="flex flex-wrap justify-center gap-3">
-            {allCategories.map((cat) => (
+            {categories.map((cat) => (
               <Link
                 key={cat.uid}
                 href={`/categories/${cat.uid}`}
                 className={`px-6 py-3 rounded-lg font-medium transition-colors duration-200 ${
                   categoryUid === cat.uid
                     ? "bg-zinc-900 dark:bg-white text-white dark:text-zinc-900"
-                    : "bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-700 border border-zinc-200 dark:border-zinc-600"
+                    : "bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-700 border-2 border-zinc-200 dark:border-0"
                 }`}
               >
-                <span className="mr-2">{getEmojiForCategory(cat.uid)}</span>
                 {cat.data.name}
               </Link>
             ))}

@@ -1,11 +1,10 @@
 import { createClient } from "../../lib/prismicio";
-import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
 export const revalidate = 30;
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata() {
   return {
     title: "Giới Thiệu",
     description: "Tác Giả - Đội Ngũ Của Chúng Tôi",
@@ -32,7 +31,6 @@ export default async function AuthorsPage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-black">
-      {/* Hero Section */}
       <div className="max-w-screen-xl mx-auto px-4 py-20 text-center">
         <div className="inline-flex items-center gap-3 bg-zinc-100 dark:bg-zinc-800 rounded-full px-6 py-2 mb-8">
           <span className="text-lg">🎮</span>

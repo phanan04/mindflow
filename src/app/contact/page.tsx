@@ -2,6 +2,18 @@ import { createClient } from "@/lib/prismicio";
 import { FaEnvelope, FaYoutube, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 import { FaFacebook, FaXTwitter } from "react-icons/fa6";
 
+export async function generateMetadata() {
+  return {
+    title: "Liên hệ",
+    description: "Liên hệ với Chúng Tôi",
+    openGraph: {
+      title: "Liên hệ",
+      description: "Liên hệ với Chúng Tôi",
+      type: "website",
+    },
+  };
+}
+
 export default async function ContactPage() {
   const client = createClient();
   const [author] = await client.getAllByType("author");
@@ -11,19 +23,21 @@ export default async function ContactPage() {
       <div className="max-w-screen-xl mx-auto px-4 py-20 text-center">
         <div className="inline-flex items-center gap-3 bg-zinc-100 dark:bg-zinc-800 rounded-full px-6 py-2 mb-8">
           <span className="text-lg">📧</span>
-          <span className="text-sm font-medium text-zinc-600 dark:text-zinc-300">Liên Hệ Với Chúng Tôi</span>
+          <span className="text-sm font-medium text-zinc-600 dark:text-zinc-300">
+            Liên Hệ Với Chúng Tôi
+          </span>
         </div>
         <h1 className="text-4xl md:text-5xl font-bold mb-6 text-zinc-900 dark:text-white">
           Liên Hệ Với Chúng Tôi
         </h1>
         <p className="text-xl text-zinc-600 dark:text-zinc-300 max-w-2xl mx-auto leading-relaxed">
-          Có câu hỏi hoặc muốn hợp tác? Chúng tôi rất mong được kết nối và lắng nghe từ bạn.
+          Có câu hỏi hoặc muốn hợp tác? Chúng tôi rất mong được kết nối và lắng
+          nghe từ bạn.
         </p>
       </div>
 
       <div className="max-w-6xl mx-auto px-4 py-16">
         <div className="grid lg:grid-cols-2 gap-12">
-          
           <div className="space-y-8">
             <div className="bg-white dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700 p-8">
               <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-200 mb-6 flex items-center gap-3">
@@ -32,15 +46,19 @@ export default async function ContactPage() {
                 </div>
                 Thông Tin Liên Hệ
               </h2>
-              
+
               <div className="space-y-6">
                 <div className="flex items-center gap-4 p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg">
                   <div className="w-12 h-12 bg-zinc-100 dark:bg-zinc-600 rounded-full flex items-center justify-center">
                     <FaEnvelope className="text-zinc-700 dark:text-zinc-300" />
                   </div>
                   <div>
-                    <p className="text-sm text-zinc-500 dark:text-zinc-400">Email</p>
-                    <p className="font-semibold text-zinc-800 dark:text-zinc-200">{author.data.email}</p>
+                    <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                      Email
+                    </p>
+                    <p className="font-semibold text-zinc-800 dark:text-zinc-200">
+                      {author.data.email}
+                    </p>
                   </div>
                 </div>
 
@@ -49,8 +67,12 @@ export default async function ContactPage() {
                     <FaPhone className="text-zinc-700 dark:text-zinc-300" />
                   </div>
                   <div>
-                    <p className="text-sm text-zinc-500 dark:text-zinc-400">Điện Thoại</p>
-                    <p className="font-semibold text-zinc-800 dark:text-zinc-200">{author.data.phone}</p>
+                    <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                      Điện Thoại
+                    </p>
+                    <p className="font-semibold text-zinc-800 dark:text-zinc-200">
+                      {author.data.phone}
+                    </p>
                   </div>
                 </div>
 
@@ -59,32 +81,38 @@ export default async function ContactPage() {
                     <FaMapMarkerAlt className="text-zinc-700 dark:text-zinc-300" />
                   </div>
                   <div>
-                    <p className="text-sm text-zinc-500 dark:text-zinc-400">Vị Trí</p>
-                    <p className="font-semibold text-zinc-800 dark:text-zinc-200">Việt Nam</p>
+                    <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                      Vị Trí
+                    </p>
+                    <p className="font-semibold text-zinc-800 dark:text-zinc-200">
+                      Việt Nam
+                    </p>
                   </div>
                 </div>
               </div>
 
               <div className="mt-8 pt-8 border-t border-zinc-200 dark:border-zinc-600">
-                <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-200 mb-4">Theo Dõi Chúng Tôi</h3>
+                <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-200 mb-4">
+                  Theo Dõi Chúng Tôi
+                </h3>
                 <div className="flex gap-4">
-                  <a 
-                    href="https://www.facebook.com/pann4/" 
-                    aria-label="Facebook" 
+                  <a
+                    href="https://www.facebook.com/pann4/"
+                    aria-label="Facebook"
                     className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors duration-200"
                   >
                     <FaFacebook className="text-lg" />
                   </a>
-                  <a 
-                    href="#" 
-                    aria-label="Twitter" 
+                  <a
+                    href="#"
+                    aria-label="Twitter"
                     className="w-12 h-12 bg-zinc-800 rounded-full flex items-center justify-center text-white hover:bg-zinc-900 transition-colors duration-200"
                   >
                     <FaXTwitter className="text-lg" />
                   </a>
-                  <a 
-                    href="#" 
-                    aria-label="Youtube" 
+                  <a
+                    href="#"
+                    aria-label="Youtube"
                     className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white hover:bg-red-700 transition-colors duration-200"
                   >
                     <FaYoutube className="text-lg" />
@@ -95,12 +123,20 @@ export default async function ContactPage() {
 
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="bg-zinc-100 dark:bg-zinc-800 rounded-lg p-6 border border-zinc-200 dark:border-zinc-700">
-                <h3 className="font-bold text-lg mb-2 text-zinc-900 dark:text-white">Phản hồi</h3>
-                <p className="text-zinc-600 dark:text-zinc-400">Thường trong vòng 24 giờ</p>
+                <h3 className="font-bold text-lg mb-2 text-zinc-900 dark:text-white">
+                  Phản hồi
+                </h3>
+                <p className="text-zinc-600 dark:text-zinc-400">
+                  Thường trong vòng 24 giờ
+                </p>
               </div>
               <div className="bg-zinc-100 dark:bg-zinc-800 rounded-lg p-6 border border-zinc-200 dark:border-zinc-700">
-                <h3 className="font-bold text-lg mb-2 text-zinc-900 dark:text-white">Giờ Làm Việc</h3>
-                <p className="text-zinc-600 dark:text-zinc-400">Thứ Hai - Thứ Sáu</p>
+                <h3 className="font-bold text-lg mb-2 text-zinc-900 dark:text-white">
+                  Giờ Làm Việc
+                </h3>
+                <p className="text-zinc-600 dark:text-zinc-400">
+                  Thứ Hai - Thứ Sáu
+                </p>
               </div>
             </div>
           </div>
@@ -147,7 +183,7 @@ export default async function ContactPage() {
 
               <div>
                 <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-2">
-                  Địa chỉ Email  *
+                  Địa chỉ Email *
                 </label>
                 <input
                   type="email"
@@ -200,8 +236,8 @@ export default async function ContactPage() {
                 Bắt Đầu Cuộc Trò Chuyện?
               </h3>
               <p className="text-zinc-600 dark:text-zinc-300 mb-8 max-w-2xl mx-auto">
-                Chúng tôi luôn sẵn sàng lắng nghe ý kiến, câu hỏi và đề xuất từ cộng đồng. 
-                Hãy kết nối với chúng tôi ngay hôm nay!
+                Chúng tôi luôn sẵn sàng lắng nghe ý kiến, câu hỏi và đề xuất từ
+                cộng đồng. Hãy kết nối với chúng tôi ngay hôm nay!
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <a

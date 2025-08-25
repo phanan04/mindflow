@@ -25,7 +25,7 @@ export default function ArticleCard({
   date,
 }: ArticleCardProps) {
   return (
-     <article className="group bg-white dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700 hover:shadow-lg transition-all duration-300 overflow-hidden">
+    <article className="group bg-white dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700 hover:shadow-lg transition-all duration-300 overflow-hidden">
       <Link href={`/blog/${slug}`} className="block">
         <div className="flex flex-col md:flex-row h-full">
           <div className="md:w-2/5 relative overflow-hidden">
@@ -73,13 +73,15 @@ export default function ArticleCard({
                 </div>
                 <div className="flex items-center gap-2 text-zinc-700 dark:text-slate-300 group-hover:text-zinc-900 dark:group-hover:text-slate-100 transition-colors duration-200">
                   <span className="text-sm font-medium">Xem Thêm</span>
-                  <FaArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform duration-200" />
+                  <FaArrowRight
+                    size={12}
+                    className="group-hover:translate-x-0.5 transition-transform duration-200"
+                  />
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </Link>
     </article>
   );

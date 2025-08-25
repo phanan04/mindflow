@@ -2,9 +2,9 @@ import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "next-themes";
 import { Metadata } from "next";
-import Loading from "./loading";
 import Header from "@/Components/Header";
 import Footer from "@/Components/Footer";
+import ScrollToTop from "@/Components/ScrollToTop";
 
 export const metadata: Metadata = {
   title: "GameFlow - Blog Game Việt Nam",
@@ -33,7 +33,10 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Header />
-            <main className="dark:bg-transparent flex-1">{children}</main>
+            <main className="dark:bg-transparent flex-1">
+              {children}
+              <ScrollToTop />
+            </main>
             <Footer />
             <SpeedInsights />
           </ThemeProvider>

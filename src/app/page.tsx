@@ -7,21 +7,22 @@ import { FaArrowRight } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "GameFLow - Tin Tức & Đánh Giá Game",
-  description: "Điểm đến tuyệt vời cho tin tức game mới nhất, đánh giá và cập nhật",
+  description:
+    "Điểm đến tuyệt vời cho tin tức game mới nhất, đánh giá và cập nhật",
 };
 
-export const revalidate = 7200; 
+export const revalidate = 7200;
 
 export default async function HomePage() {
   const posts = await getPosts();
-  const featuredPosts = posts.slice(0, 3);  
-  const latestPosts = posts.slice(3, 7); 
+  const featuredPosts = posts.slice(0, 3);
+  const latestPosts = posts.slice(3, 7);
 
   return (
     <>
       <section className="dark:border-zinc-700 py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-6">
+          <h1 className="bg-gradient-to-t from-zinc-400 to-zinc-900 dark:from-black/10 dark:to-white bg-clip-text text-transparent text-3xl md:text-5xl font-bold mb-6">
             Welcome to GameFlow
           </h1>
           <p className="text-lg md:text-xl mb-8 text-zinc-600 dark:text-zinc-300 max-w-2xl mx-auto">

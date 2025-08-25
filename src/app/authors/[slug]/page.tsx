@@ -2,8 +2,7 @@ import { createClient } from "../../../lib/prismicio";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { asText, filter } from "@prismicio/client";
-import { formatDate } from "../../../lib/formatDate";
+import { filter } from "@prismicio/client";
 
 export const revalidate = 30;
 
