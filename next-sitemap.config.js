@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://mindflow-pan.vercel.app',
+  siteUrl: 'https://gameflow.page',
   generateRobotsTxt: true,
   sitemapSize: 7000,
   exclude: ['/admin/*', '/api/*', '/slice-simulator/*', '/_next/*'],
