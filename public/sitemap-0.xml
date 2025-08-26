@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://mindflow-pan.vercel.app/sitemap.xml</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mindflow-pan.vercel.app/authors</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mindflow-pan.vercel.app</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>1</priority></url>
-<url><loc>https://mindflow-pan.vercel.app/contact</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mindflow-pan.vercel.app/authors/a1</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mindflow-pan.vercel.app/authors/phan-an</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mindflow-pan.vercel.app/categories/action</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mindflow-pan.vercel.app/categories/adventure</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mindflow-pan.vercel.app/categories/all-posts</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mindflow-pan.vercel.app/categories/rpg</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mindflow-pan.vercel.app/blog/astro-bot</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mindflow-pan.vercel.app/blog/elden-ring</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mindflow-pan.vercel.app/blog/god-of-war</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mindflow-pan.vercel.app/blog/grand-theft-auto-v</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mindflow-pan.vercel.app/blog/red-dead-redemption-2</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mindflow-pan.vercel.app/blog/the-legend-of-zelda-breath-of-the-wild</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mindflow-pan.vercel.app/blog/the-witcher-3-wild-hunt</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://gameflow.page/sitemap.xml</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://gameflow.page/authors</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://gameflow.page</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>1</priority></url>
+<url><loc>https://gameflow.page/contact</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://gameflow.page/authors/a1</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://gameflow.page/authors/phan-an</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://gameflow.page/categories/action</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://gameflow.page/categories/adventure</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://gameflow.page/categories/all-posts</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://gameflow.page/categories/rpg</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://gameflow.page/blog/astro-bot</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://gameflow.page/blog/elden-ring</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://gameflow.page/blog/god-of-war</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://gameflow.page/blog/grand-theft-auto-v</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://gameflow.page/blog/red-dead-redemption-2</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://gameflow.page/blog/the-legend-of-zelda-breath-of-the-wild</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://gameflow.page/blog/the-witcher-3-wild-hunt</loc><lastmod>2025-08-19T09:08:59.241Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>

@@ -6,4 +6,5 @@ Disallow: /_next/
 Disallow: /slice-simulator/
 
 # Sitemap
-Sitemap: https://mindflow-pan.vercel.app/sitemap.xml
+Sitemap: https://gameflow.page/sitemap.xml
+
