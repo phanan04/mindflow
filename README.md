@@ -67,7 +67,7 @@ src/
 
 ## Deployment
 
-Vercel: https://mindflow-pan.vercel.app/
+Vercel: https://www.gameflow.page/
 
 ## License
 
